@@ -71,7 +71,6 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
     // 节点名称
     cell.node.text = cellTopic.node.title;
     // 回复数
-    NSLog(@"---------------%@", cellTopic.replies);
     cell.msgCount.text = cellTopic.replies;
     return cell;
 }
