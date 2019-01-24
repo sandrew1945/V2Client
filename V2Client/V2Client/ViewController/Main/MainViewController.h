@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFNetworking.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MainViewController : UITableViewController
+
+@property (strong, nonatomic) NSArray *topics;
+@property (strong, nonatomic) AFHTTPSessionManager *manager;
 
 @end
 

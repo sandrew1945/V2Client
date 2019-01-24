@@ -20,6 +20,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     MainViewController *mainController = [[MainViewController alloc] init];
+    mainController.title = @"V2EX";
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainController];
     
     [self.window makeKeyAndVisible];

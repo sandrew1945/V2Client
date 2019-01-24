@@ -14,6 +14,13 @@
 		C40C31A921F73BF700109E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40C31A821F73BF700109E4A /* Assets.xcassets */; };
 		C40C31AC21F73BF700109E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40C31AA21F73BF700109E4A /* LaunchScreen.storyboard */; };
 		C40C31AF21F73BF700109E4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C31AE21F73BF700109E4A /* main.m */; };
+		C4339DD721F806D100314BCB /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DD621F806D100314BCB /* Topic.m */; };
+		C4339DDA21F8080100314BCB /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DD921F8080100314BCB /* Node.m */; };
+		C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDC21F83E4200314BCB /* MainTableViewCell.m */; };
+		C4339DE021F83EDB00314BCB /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDF21F83EDB00314BCB /* Member.m */; };
+		C4339DE621F8402F00314BCB /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DE521F8402F00314BCB /* MainService.m */; };
+		C4BB736121F945160026BB06 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736021F945160026BB06 /* Constants.m */; };
+		C4BB736521F98C5F0026BB06 /* TopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */; };
 		C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D24F6C21F742C100C18731 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +37,21 @@
 		C40C31AB21F73BF700109E4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40C31AD21F73BF700109E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C40C31AE21F73BF700109E4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4339DD521F806D100314BCB /* Topic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		C4339DD621F806D100314BCB /* Topic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
+		C4339DD821F8080100314BCB /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		C4339DD921F8080100314BCB /* Node.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		C4339DDB21F83E4200314BCB /* MainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
+		C4339DDC21F83E4200314BCB /* MainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
+		C4339DDE21F83EDB00314BCB /* Member.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Member.h; sourceTree = "<group>"; };
+		C4339DDF21F83EDB00314BCB /* Member.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Member.m; sourceTree = "<group>"; };
+		C4339DE421F8402F00314BCB /* MainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
+		C4339DE521F8402F00314BCB /* MainService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
+		C4339DE921F855EC00314BCB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C4BB735F21F945160026BB06 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C4BB736021F945160026BB06 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		C4BB736321F98C5F0026BB06 /* TopicDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicDetailViewController.h; sourceTree = "<group>"; };
+		C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicDetailViewController.m; sourceTree = "<group>"; };
 		C4D24F6B21F742C100C18731 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C4D24F6C21F742C100C18731 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		EEECFC101CD3B3D8C1CFF595 /* libPods-V2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-V2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +98,9 @@
 		C40C319E21F73BF600109E4A /* V2Client */ = {
 			isa = PBXGroup;
 			children = (
+				C4339DE821F855C600314BCB /* Resources */,
+				C4339DE121F83FE500314BCB /* Service */,
+				C4339DD421F8068400314BCB /* Module */,
 				C4D24F6A21F7429900C18731 /* ViewController */,
 				C40C319F21F73BF600109E4A /* AppDelegate.h */,
 				C40C31A021F73BF600109E4A /* AppDelegate.m */,
@@ -90,11 +115,71 @@
 			path = V2Client;
 			sourceTree = "<group>";
 		};
-		C4D24F6A21F7429900C18731 /* ViewController */ = {
+		C4339DD421F8068400314BCB /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				C4339DD521F806D100314BCB /* Topic.h */,
+				C4339DD621F806D100314BCB /* Topic.m */,
+				C4339DD821F8080100314BCB /* Node.h */,
+				C4339DD921F8080100314BCB /* Node.m */,
+				C4339DDE21F83EDB00314BCB /* Member.h */,
+				C4339DDF21F83EDB00314BCB /* Member.m */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		C4339DE121F83FE500314BCB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C4339DE321F8400E00314BCB /* Main */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C4339DE221F83FF700314BCB /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				C4D24F6B21F742C100C18731 /* MainViewController.h */,
 				C4D24F6C21F742C100C18731 /* MainViewController.m */,
+				C4339DDB21F83E4200314BCB /* MainTableViewCell.h */,
+				C4339DDC21F83E4200314BCB /* MainTableViewCell.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C4339DE321F8400E00314BCB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C4339DE421F8402F00314BCB /* MainService.h */,
+				C4339DE521F8402F00314BCB /* MainService.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C4339DE821F855C600314BCB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C4339DE921F855EC00314BCB /* PrefixHeader.pch */,
+				C4BB735F21F945160026BB06 /* Constants.h */,
+				C4BB736021F945160026BB06 /* Constants.m */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C4BB736221F98C2F0026BB06 /* TopicDetail */ = {
+			isa = PBXGroup;
+			children = (
+				C4BB736321F98C5F0026BB06 /* TopicDetailViewController.h */,
+				C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */,
+			);
+			path = TopicDetail;
+			sourceTree = "<group>";
+		};
+		C4D24F6A21F7429900C18731 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C4BB736221F98C2F0026BB06 /* TopicDetail */,
+				C4339DE221F83FF700314BCB /* Main */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -228,9 +313,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C40C31A421F73BF600109E4A /* ViewController.m in Sources */,
+				C4339DE621F8402F00314BCB /* MainService.m in Sources */,
 				C40C31AF21F73BF700109E4A /* main.m in Sources */,
+				C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */,
+				C4339DE021F83EDB00314BCB /* Member.m in Sources */,
+				C4BB736121F945160026BB06 /* Constants.m in Sources */,
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
+				C4BB736521F98C5F0026BB06 /* TopicDetailViewController.m in Sources */,
+				C4339DD721F806D100314BCB /* Topic.m in Sources */,
 				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,
+				C4339DDA21F8080100314BCB /* Node.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
