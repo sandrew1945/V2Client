@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Topic : NSObject
 
-@property (assign, nonatomic) NSInteger *id;
+@property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *content;
 @property (strong, nonatomic) NSString *contentRendered;

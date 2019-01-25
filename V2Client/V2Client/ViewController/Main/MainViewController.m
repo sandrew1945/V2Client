@@ -14,6 +14,7 @@
 #import "UIKit+AFNetworking.h"
 #import "MainService.h"
 #import "MainTableViewCell.h"
+#import "TopicDetailViewController.h"
 
 @interface MainViewController ()
 
@@ -74,6 +75,15 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
     cell.msgCount.text = cellTopic.replies;
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    TopicDetailViewController *subViewController = [[TopicDetailViewController alloc] init];
+    Topic *selectedTopic = [self.topics objectAtIndex:[indexPath section]];
+    subViewController.topicId = selectedTopic.id;
+    [self.navigationController pushViewController:subViewController animated:YES];
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
 {
     return @" ";
@@ -106,6 +116,12 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
         }];
 }
 
+
+#pragma mark Actions
+- (void)clickTopic:(id)sender
+{
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

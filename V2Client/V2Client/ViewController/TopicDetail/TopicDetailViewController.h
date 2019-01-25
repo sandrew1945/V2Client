@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
+#import "Topic.h"
+#import "AFNetworking.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TopicDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface TopicDetailViewController : UITableViewController
 
-@property (assign, nonatomic) NSInteger id;
+@property (strong, nonatomic) NSString *topicId;
+@property (strong, nonatomic) Topic *topic;
+@property (strong, nonatomic) AFHTTPSessionManager *manager;
 //@property (strong, nonatomic) NSArray
 
 @end

@@ -13,7 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Constants : NSObject
 
-    UIKIT_EXTERN NSString * const ALL_TOPIC_URL;
+UIKIT_EXTERN NSString * const ALL_TOPIC_URL;
+UIKIT_EXTERN NSString * const TOPIC_CONTENT_URL;
+
 @end
 
 NS_ASSUME_NONNULL_END
