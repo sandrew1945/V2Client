@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B61DB4678C897E31279435E8 /* libPods-V2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEECFC101CD3B3D8C1CFF595 /* libPods-V2Client.a */; };
-		C408662F21FADDB500949CB7 /* XTableViewAddedView.m in Sources */ = {isa = PBXBuildFile; fileRef = C408662E21FADDB500949CB7 /* XTableViewAddedView.m */; };
 		C408663221FAF0A000949CB7 /* TopicDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C408663121FAF0A000949CB7 /* TopicDetailCell.m */; };
 		C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C31A021F73BF600109E4A /* AppDelegate.m */; };
 		C40C31A421F73BF600109E4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C31A321F73BF600109E4A /* ViewController.m */; };
@@ -29,8 +28,6 @@
 /* Begin PBXFileReference section */
 		236EFB1A454465138531D4F6 /* Pods-V2Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2Client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-V2Client/Pods-V2Client.debug.xcconfig"; sourceTree = "<group>"; };
 		71D14DB8B1D4A91E0B17CBFA /* Pods-V2Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2Client.release.xcconfig"; path = "Pods/Target Support Files/Pods-V2Client/Pods-V2Client.release.xcconfig"; sourceTree = "<group>"; };
-		C408662D21FADDB500949CB7 /* XTableViewAddedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTableViewAddedView.h; sourceTree = "<group>"; };
-		C408662E21FADDB500949CB7 /* XTableViewAddedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTableViewAddedView.m; sourceTree = "<group>"; };
 		C408663021FAF0A000949CB7 /* TopicDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicDetailCell.h; sourceTree = "<group>"; };
 		C408663121FAF0A000949CB7 /* TopicDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicDetailCell.m; sourceTree = "<group>"; };
 		C40C319C21F73BF600109E4A /* V2Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,8 +174,6 @@
 			children = (
 				C4BB736321F98C5F0026BB06 /* TopicDetailViewController.h */,
 				C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */,
-				C408662D21FADDB500949CB7 /* XTableViewAddedView.h */,
-				C408662E21FADDB500949CB7 /* XTableViewAddedView.m */,
 				C408663021FAF0A000949CB7 /* TopicDetailCell.h */,
 				C408663121FAF0A000949CB7 /* TopicDetailCell.m */,
 			);
@@ -331,7 +326,6 @@
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
 				C4BB736521F98C5F0026BB06 /* TopicDetailViewController.m in Sources */,
 				C408663221FAF0A000949CB7 /* TopicDetailCell.m in Sources */,
-				C408662F21FADDB500949CB7 /* XTableViewAddedView.m in Sources */,
 				C4339DD721F806D100314BCB /* Topic.m in Sources */,
 				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,
 				C4339DDA21F8080100314BCB /* Node.m in Sources */,

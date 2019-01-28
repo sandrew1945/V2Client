@@ -24,13 +24,12 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    [self addWebViewObserver];
+//    [self addWebViewObserver];
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
         // 添加头像view
         self.avatarImageView = [[UIImageView alloc] init];
-        
         [self addSubview:self.avatarImageView];
         [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.equalTo(@40);
@@ -54,53 +53,48 @@
         [self addSubview:self.topic];
         [self.topic mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.avatarImageView.mas_bottom).with.offset(10);
-            make.bottom.equalTo(self.mas_bottom).with.offset(-10);
+            //make.bottom.equalTo(self.mas_bottom).with.offset(-10);
             make.left.equalTo(self.mas_left).with.offset(10);
             make.width.equalTo(self.mas_width).with.offset(-10);
         }];
-        
-        
         // 添加节点名称
         self.node = [[UILabel alloc] init];
         self.node.backgroundColor = [UIColor grayColor];
         self.node.font = [UIFont systemFontOfSize:10.0f];
-        self.node.numberOfLines = 0;
         [self addSubview:self.node];
         [self.node mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.avatarImageView.mas_top);
-            make.right.equalTo(self.mas_left).with.offset(-10);
+            make.right.equalTo(self.mas_right).with.offset(-10);
             //            make.width.equalTo(@40);
             make.height.equalTo(@21);
         }];
-        
-        
     }
     return self;
 }
 
-#pragma mark listen webview height
-- (void)addWebViewObserver {
-    [self.topicView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    /**  < loading：防止滚动一直刷新，出现闪屏 >  */
-    if ([keyPath isEqualToString:@"contentSize"]) {
-        CGRect webFrame = self.topicView.frame;
-        webFrame.size.height = self.topicView.scrollView.contentSize.height;
-        self.topicView.frame = webFrame;
-        
-    }
-}
-- (void)removeWebViewObserver {
-    [self.topicView.scrollView removeObserver:self forKeyPath:@"contentSize"];
-}
-
-
-#pragma mark dealloc
-- (void)dealloc
-{
-    [self removeWebViewObserver];
-}
+//#pragma mark listen webview height
+//- (void)addWebViewObserver {
+//    [self.topicView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+//}
+//
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+//    /**  < loading：防止滚动一直刷新，出现闪屏 >  */
+//    if ([keyPath isEqualToString:@"contentSize"]) {
+//        CGRect webFrame = self.topicView.frame;
+//        webFrame.size.height = self.topicView.scrollView.contentSize.height;
+//        self.topicView.frame = webFrame;
+//
+//    }
+//}
+//- (void)removeWebViewObserver {
+//    [self.topicView.scrollView removeObserver:self forKeyPath:@"contentSize"];
+//}
+//
+//
+//#pragma mark dealloc
+//- (void)dealloc
+//{
+//    [self removeWebViewObserver];
+//}
 
 @end
