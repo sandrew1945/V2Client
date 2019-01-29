@@ -13,7 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TopicDetailViewController : UITableViewController
+@interface TopicDetailViewController : UITableViewController <WKNavigationDelegate>
 
 @property (strong, nonatomic) NSString *topicId;
 @property (strong, nonatomic) Topic *topic;

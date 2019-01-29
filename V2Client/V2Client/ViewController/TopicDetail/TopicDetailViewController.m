@@ -95,7 +95,7 @@ static NSString *REPLIES_CELL_INDENTIFIER = @"replies_reuseIdentifier";
         case 0:
             return 1;
         default:
-            return 100;
+            return 10;
     }
 }
 
@@ -156,6 +156,7 @@ static NSString *REPLIES_CELL_INDENTIFIER = @"replies_reuseIdentifier";
 
     // 添加帖子内容
     self.topicView = [[WKWebView alloc] init];
+    self.topicView.navigationDelegate = self;
     [header addSubview:self.topicView];
     [self.topicView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.topicLabel.mas_bottom).with.offset(5);
@@ -208,7 +209,7 @@ static NSString *REPLIES_CELL_INDENTIFIER = @"replies_reuseIdentifier";
     [self.tableView endUpdates];
     //下面这部分很关键,重新布局获取最新的frame,然后赋值给myTableHeaderView
     [self.headerHolder setNeedsLayout];
-    [self.headerHolder layoutIfNeeded];
+//    [self.headerHolder layoutIfNeeded];
     CGSize size = [self.headerHolder systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     CGRect headerFrame = self.headerHolder.frame;
     headerFrame.size.height = size.height;
@@ -244,7 +245,6 @@ static NSString *REPLIES_CELL_INDENTIFIER = @"replies_reuseIdentifier";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     /**  < loading：防止滚动一直刷新，出现闪屏 >  */
     if ([keyPath isEqualToString:@"contentSize"]) {
-        self.webView.scrollView.contentSize.height;
         CGRect webFrame = self.topicView.frame;
         webFrame.size.height = self.topicView.scrollView.contentSize.height;
         self.topicView.frame = webFrame;
@@ -253,8 +253,6 @@ static NSString *REPLIES_CELL_INDENTIFIER = @"replies_reuseIdentifier";
 //        [self.tableView beginUpdates];
 //        [self.tableView setTableHeaderView:self.headerHolder];
 //        [self.tableView endUpdates];
-
-        
     }
             NSLog(@"frame ------------------- %@", NSStringFromCGRect(self.topicView.frame));
 }
@@ -269,5 +267,12 @@ static NSString *REPLIES_CELL_INDENTIFIER = @"replies_reuseIdentifier";
     [self removeWebViewObserver];
 }
 
+
+#pragma mark NavigateDelegate
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    NSLog(@"网页加载完成");
+    [self.headerHolder setNeedsLayout];
+}
 
 @end

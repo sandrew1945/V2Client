@@ -15,6 +15,8 @@
 		C40C31A921F73BF700109E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40C31A821F73BF700109E4A /* Assets.xcassets */; };
 		C40C31AC21F73BF700109E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40C31AA21F73BF700109E4A /* LaunchScreen.storyboard */; };
 		C40C31AF21F73BF700109E4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C31AE21F73BF700109E4A /* main.m */; };
+		C428C4712200258000AA0542 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C428C4702200258000AA0542 /* DetailViewController.m */; };
+		C428C4742200265B00AA0542 /* UIView+HSKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C428C4722200265B00AA0542 /* UIView+HSKit.m */; };
 		C4339DD721F806D100314BCB /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DD621F806D100314BCB /* Topic.m */; };
 		C4339DDA21F8080100314BCB /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DD921F8080100314BCB /* Node.m */; };
 		C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDC21F83E4200314BCB /* MainTableViewCell.m */; };
@@ -40,6 +42,10 @@
 		C40C31AB21F73BF700109E4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40C31AD21F73BF700109E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C40C31AE21F73BF700109E4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C428C46F2200258000AA0542 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C428C4702200258000AA0542 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C428C4722200265B00AA0542 /* UIView+HSKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HSKit.m"; sourceTree = "<group>"; };
+		C428C4732200265B00AA0542 /* UIView+HSKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HSKit.h"; sourceTree = "<group>"; };
 		C4339DD521F806D100314BCB /* Topic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
 		C4339DD621F806D100314BCB /* Topic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		C4339DD821F8080100314BCB /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
@@ -101,6 +107,7 @@
 		C40C319E21F73BF600109E4A /* V2Client */ = {
 			isa = PBXGroup;
 			children = (
+				C428C4752200266D00AA0542 /* Extend */,
 				C4339DE821F855C600314BCB /* Resources */,
 				C4339DE121F83FE500314BCB /* Service */,
 				C4339DD421F8068400314BCB /* Module */,
@@ -116,6 +123,15 @@
 				C40C31AE21F73BF700109E4A /* main.m */,
 			);
 			path = V2Client;
+			sourceTree = "<group>";
+		};
+		C428C4752200266D00AA0542 /* Extend */ = {
+			isa = PBXGroup;
+			children = (
+				C428C4732200265B00AA0542 /* UIView+HSKit.h */,
+				C428C4722200265B00AA0542 /* UIView+HSKit.m */,
+			);
+			path = Extend;
 			sourceTree = "<group>";
 		};
 		C4339DD421F8068400314BCB /* Module */ = {
@@ -172,6 +188,8 @@
 		C4BB736221F98C2F0026BB06 /* TopicDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C428C46F2200258000AA0542 /* DetailViewController.h */,
+				C428C4702200258000AA0542 /* DetailViewController.m */,
 				C4BB736321F98C5F0026BB06 /* TopicDetailViewController.h */,
 				C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */,
 				C408663021FAF0A000949CB7 /* TopicDetailCell.h */,
@@ -323,9 +341,11 @@
 				C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */,
 				C4339DE021F83EDB00314BCB /* Member.m in Sources */,
 				C4BB736121F945160026BB06 /* Constants.m in Sources */,
+				C428C4742200265B00AA0542 /* UIView+HSKit.m in Sources */,
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
 				C4BB736521F98C5F0026BB06 /* TopicDetailViewController.m in Sources */,
 				C408663221FAF0A000949CB7 /* TopicDetailCell.m in Sources */,
+				C428C4712200258000AA0542 /* DetailViewController.m in Sources */,
 				C4339DD721F806D100314BCB /* Topic.m in Sources */,
 				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,
 				C4339DDA21F8080100314BCB /* Node.m in Sources */,

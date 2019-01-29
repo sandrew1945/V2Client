@@ -14,7 +14,7 @@
 #import "UIKit+AFNetworking.h"
 #import "MainService.h"
 #import "MainTableViewCell.h"
-#import "TopicDetailViewController.h"
+#import "DetailViewController.h"
 
 @interface MainViewController ()
 
@@ -78,7 +78,8 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TopicDetailViewController *subViewController = [[TopicDetailViewController alloc] init];
+//    TopicDetailViewController *subViewController = [[TopicDetailViewController alloc] init];
+    DetailViewController *subViewController = [[DetailViewController alloc] init];
     Topic *selectedTopic = [self.topics objectAtIndex:[indexPath section]];
     subViewController.topicId = selectedTopic.id;
     [self.navigationController pushViewController:subViewController animated:YES];
