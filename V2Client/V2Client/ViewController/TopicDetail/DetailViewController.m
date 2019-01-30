@@ -10,10 +10,12 @@
 #import <WebKit/WebKit.h>
 #import "UIView+HSKit.h"
 #import "Topic.h"
+#import "Reply.h"
 #import "UIKit+AFNetworking.h"
 #import "MainService.h"
 #import "Constants.h"
 #import "Masonry.h"
+#import "ReplyDetailCell.h"
 
 /**
  * 最上面有个View，WebView和TableView
@@ -23,17 +25,18 @@ WKNavigationDelegate>
 
 @property (strong, nonatomic) AFHTTPSessionManager *manager;
 
+// 数据
 @property (strong, nonatomic) Topic         *topic;
+@property (strong, nonatomic) NSArray       *replies;
 
+// 布局
 @property (nonatomic, strong) WKWebView     *webView;
-
 @property (nonatomic, strong) UITableView   *tableView;
-
 @property (nonatomic, strong) UIScrollView  *containerScrollView;
-
 @property (nonatomic, strong) UIView        *contentView;
-
 @property (nonatomic, strong) UIView        *topView;
+
+// topView内布局
 @property (strong, nonatomic) UIImageView   *avatarImageView;
 @property (strong, nonatomic) UILabel       *userName;
 @property (strong, nonatomic) UILabel       *topicLabel;
@@ -153,7 +156,6 @@ WKNavigationDelegate>
     
     CGFloat webViewContentHeight = self.webView.scrollView.contentSize.height;
     CGFloat tableViewContentHeight = self.tableView.contentSize.height;
-    //CGFloat topViewHeight = self.topView.height;
     CGFloat webViewTop = self.webView.top;
     
     CGFloat netOffsetY = offsetY - webViewTop;
@@ -185,45 +187,82 @@ WKNavigationDelegate>
 }
 
 #pragma mark - UITableViewDataSouce
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [self.replies count];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
-}
-
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 40;
+//}
+static NSString *CELL_INDENTIFIER = @"cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+
+    ReplyDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_INDENTIFIER];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[ReplyDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_INDENTIFIER];
         cell.backgroundColor = [UIColor whiteColor];
     }
-    
-    cell.textLabel.text = @(indexPath.row).stringValue;
+    Reply *cellReply = (Reply*)[self.replies objectAtIndex: [indexPath section]];
+    // 头像
+    NSURL *url = [NSURL URLWithString:[@"https:" stringByAppendingString:cellReply.member.avatarNormal]];
+    [cell.avatarImageView setImageWithURL:url placeholderImage:nil];
+    // 发帖人
+    cell.userName.text = cellReply.member.username;
+    // 回复内容
+    cell.reply.text = [cellReply content];
     return cell;
 }
 
-#pragma mark - load data
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    return @" ";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 5;
+}
+
+
 #pragma mark - fetch data
 - (void)getTopicDataById:(NSString *)topicId
 {
-    NSDictionary *paramDict = @{@"id":self.topicId};
+    MainService *service = [[MainService alloc] init];
     self.manager = [AFHTTPSessionManager manager];
-    [self.manager GET:TOPIC_CONTENT_URL parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@---%@",[responseObject class],responseObject);
-        MainService *service = [[MainService alloc] init];
-        [service adapterMapping];
-        NSArray *topics = [Topic mj_objectArrayWithKeyValuesArray:responseObject];
-        self.topic = [topics objectAtIndex:0];
-        NSLog(@"%@---%@",[self.topic class], self.topic);
+
+    // 获取帖子回复信息
+    NSDictionary *replyDict = @{@"topic_id":self.topicId};
+    [self.manager GET:TOPIC_REPLY_URL parameters:replyDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [service topicReplyAdapterMapping];
+        self.replies = [Reply mj_objectArrayWithKeyValuesArray:responseObject];
         [self.tableView reloadData];
-        [self loadHeaderData];
+        
+        
+        // 获取帖子头信息
+        NSDictionary *paramDict = @{@"id":self.topicId};
+        [self.manager GET:TOPIC_CONTENT_URL parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"%@---%@",[responseObject class],responseObject);
+            [service topicHeadAdapterMapping];
+            NSArray *topics = [Topic mj_objectArrayWithKeyValuesArray:responseObject];
+            self.topic = [topics objectAtIndex:0];
+            NSLog(@"%@---%@",[self.topic class], self.topic);
+            [self loadHeaderData];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"error");
+        }];
+        
+        
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error");
     }];
 }
 
+#pragma mark - load data
 - (void)loadHeaderData
 {
     // 头像
@@ -238,7 +277,13 @@ WKNavigationDelegate>
     // 重新适配webview的top属性
     [self changeWebViewTop];
     // 帖子内容
-    NSString *htmlString = [NSString stringWithFormat:@"<html> \n"
+    [self.webView loadHTMLString:[self beautifyHtml:self.topic.contentRendered] baseURL:nil];
+}
+
+// 美化html
+- (NSString *)beautifyHtml:(NSString *)html
+{
+    NSString *beautifulHtml = [NSString stringWithFormat:@"<html> \n"
                             "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>\n"
                             "<body>"
                             "<script type='text/javascript'>"
@@ -251,9 +296,8 @@ WKNavigationDelegate>
                             "}"
                             "</script>%@"
                             "</body>"
-                            "</html>", self.topic.contentRendered];
-    
-    [self.webView loadHTMLString:htmlString baseURL:nil];
+                            "</html>", html];
+    return beautifulHtml;
 }
 
 - (void)changeWebViewTop
@@ -261,7 +305,7 @@ WKNavigationDelegate>
     // 更新view
     [_topView layoutIfNeeded];
     // 重新获取高度
-    CGFloat tagViewHeight = _topView.height + 1;
+    CGFloat tagViewHeight = _topView.height + 0.2;
     self.webView.top = tagViewHeight;
 }
 
@@ -283,9 +327,21 @@ WKNavigationDelegate>
         _tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.tableFooterView = [UIView new];
-        _tableView.scrollEnabled = NO;
+//        UIView *tableFooter = [UIView new];
+//        UILabel *footer = [[UILabel alloc] init];
+//        [footer sizeToFit];
+//        footer.text = @"没有更多回复";
+//        [tableFooter addSubview:footer];
+//        [footer mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.centerX.equalTo(tableFooter.mas_centerX);
+//            make.centerY.equalTo(tableFooter.mas_centerY);
+//        }];
+//        _tableView.tableFooterView = tableFooter;
         
+        _tableView.scrollEnabled = NO;
+        _tableView.estimatedRowHeight = 100;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
+        [_tableView registerClass:[ReplyDetailCell class] forCellReuseIdentifier:CELL_INDENTIFIER];
     }
     return _tableView;
 }

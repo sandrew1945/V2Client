@@ -20,7 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)parseTopicsAndCopyTo:(NSArray<Topic *> *)topicList;
 
-- (void)adapterMapping;
+- (void)topicHeadAdapterMapping;
+
+- (void) topicReplyAdapterMapping;
 @end
 
 NS_ASSUME_NONNULL_END

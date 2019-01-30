@@ -8,6 +8,7 @@
 
 #import "MainService.h"
 #import "Topic.h"
+#import "Reply.h"
 
 @implementation MainService
 
@@ -24,7 +25,7 @@
     }];
 }
 
-- (void)adapterMapping
+- (void)topicHeadAdapterMapping
 {
     [Topic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{
@@ -36,6 +37,15 @@
                  @"avatarNormal" : @"avatar_normal",
                  @"avatarLarge" : @"avatar_large",
                  @"avatarMini" : @"avatar_mini"
+                 };
+    }];
+}
+
+- (void) topicReplyAdapterMapping
+{
+    [Reply mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+        return @{
+                 @"contentRendered" : @"content_rendered"
                  };
     }];
 }

@@ -11,13 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TopicDetailCell : UITableViewCell
+@interface ReplyDetailCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *avatarImageView;
 @property (strong, nonatomic) UILabel *userName;
-@property (strong, nonatomic) UILabel *topic;
-@property (strong, nonatomic) UILabel *node;
-@property (strong, nonatomic) WKWebView *topicView;
+@property (strong, nonatomic) UILabel *reply;
 
 @end
 

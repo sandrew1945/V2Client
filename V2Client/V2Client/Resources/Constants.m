@@ -12,5 +12,5 @@
 
 NSString * const ALL_TOPIC_URL = @"https://www.v2ex.com/api/topics/latest.json";
 NSString * const TOPIC_CONTENT_URL = @"https://www.v2ex.com/api/topics/show.json";
-
+NSString * const TOPIC_REPLY_URL = @"https://www.v2ex.com/api/replies/show.json";
 @end

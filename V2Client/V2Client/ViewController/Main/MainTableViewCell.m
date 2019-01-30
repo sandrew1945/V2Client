@@ -40,11 +40,12 @@
         // 添加用户名view
         self.userName = [[UILabel alloc] init];
         [self.userName setFont:[UIFont systemFontOfSize:12.0f]];
+        [self.userName sizeToFit];
         [self addSubview:self.userName];
         [self.userName mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.avatarImageView.mas_top);
             make.left.equalTo(self.avatarImageView.mas_right).with.offset(10);
-            make.width.equalTo(@100);
+            //make.width.equalTo(@200);
             make.height.equalTo(@21);
         }];
         // 添加帖子标题

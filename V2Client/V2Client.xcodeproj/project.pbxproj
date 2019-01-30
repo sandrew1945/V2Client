@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B61DB4678C897E31279435E8 /* libPods-V2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EEECFC101CD3B3D8C1CFF595 /* libPods-V2Client.a */; };
-		C408663221FAF0A000949CB7 /* TopicDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C408663121FAF0A000949CB7 /* TopicDetailCell.m */; };
 		C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C31A021F73BF600109E4A /* AppDelegate.m */; };
 		C40C31A421F73BF600109E4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40C31A321F73BF600109E4A /* ViewController.m */; };
 		C40C31A721F73BF600109E4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40C31A521F73BF600109E4A /* Main.storyboard */; };
@@ -22,16 +21,16 @@
 		C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDC21F83E4200314BCB /* MainTableViewCell.m */; };
 		C4339DE021F83EDB00314BCB /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDF21F83EDB00314BCB /* Member.m */; };
 		C4339DE621F8402F00314BCB /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DE521F8402F00314BCB /* MainService.m */; };
+		C448D727220133BF00102BF4 /* ReplyDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C448D726220133BF00102BF4 /* ReplyDetailCell.m */; };
+		C448D72A2201377700102BF4 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = C448D7292201377700102BF4 /* Reply.m */; };
 		C4BB736121F945160026BB06 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736021F945160026BB06 /* Constants.m */; };
-		C4BB736521F98C5F0026BB06 /* TopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */; };
 		C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D24F6C21F742C100C18731 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		236EFB1A454465138531D4F6 /* Pods-V2Client.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2Client.debug.xcconfig"; path = "Pods/Target Support Files/Pods-V2Client/Pods-V2Client.debug.xcconfig"; sourceTree = "<group>"; };
 		71D14DB8B1D4A91E0B17CBFA /* Pods-V2Client.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-V2Client.release.xcconfig"; path = "Pods/Target Support Files/Pods-V2Client/Pods-V2Client.release.xcconfig"; sourceTree = "<group>"; };
-		C408663021FAF0A000949CB7 /* TopicDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicDetailCell.h; sourceTree = "<group>"; };
-		C408663121FAF0A000949CB7 /* TopicDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicDetailCell.m; sourceTree = "<group>"; };
+		C408663021FAF0A000949CB7 /* ReplyDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReplyDetailCell.h; sourceTree = "<group>"; };
 		C40C319C21F73BF600109E4A /* V2Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40C319F21F73BF600109E4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C40C31A021F73BF600109E4A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,10 +56,11 @@
 		C4339DE421F8402F00314BCB /* MainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
 		C4339DE521F8402F00314BCB /* MainService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
 		C4339DE921F855EC00314BCB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C448D726220133BF00102BF4 /* ReplyDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyDetailCell.m; sourceTree = "<group>"; };
+		C448D7282201377700102BF4 /* Reply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reply.h; sourceTree = "<group>"; };
+		C448D7292201377700102BF4 /* Reply.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
 		C4BB735F21F945160026BB06 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C4BB736021F945160026BB06 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		C4BB736321F98C5F0026BB06 /* TopicDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicDetailViewController.h; sourceTree = "<group>"; };
-		C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicDetailViewController.m; sourceTree = "<group>"; };
 		C4D24F6B21F742C100C18731 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C4D24F6C21F742C100C18731 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		EEECFC101CD3B3D8C1CFF595 /* libPods-V2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-V2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +143,8 @@
 				C4339DD921F8080100314BCB /* Node.m */,
 				C4339DDE21F83EDB00314BCB /* Member.h */,
 				C4339DDF21F83EDB00314BCB /* Member.m */,
+				C448D7282201377700102BF4 /* Reply.h */,
+				C448D7292201377700102BF4 /* Reply.m */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -190,10 +192,8 @@
 			children = (
 				C428C46F2200258000AA0542 /* DetailViewController.h */,
 				C428C4702200258000AA0542 /* DetailViewController.m */,
-				C4BB736321F98C5F0026BB06 /* TopicDetailViewController.h */,
-				C4BB736421F98C5F0026BB06 /* TopicDetailViewController.m */,
-				C408663021FAF0A000949CB7 /* TopicDetailCell.h */,
-				C408663121FAF0A000949CB7 /* TopicDetailCell.m */,
+				C408663021FAF0A000949CB7 /* ReplyDetailCell.h */,
+				C448D726220133BF00102BF4 /* ReplyDetailCell.m */,
 			);
 			path = TopicDetail;
 			sourceTree = "<group>";
@@ -339,12 +339,12 @@
 				C4339DE621F8402F00314BCB /* MainService.m in Sources */,
 				C40C31AF21F73BF700109E4A /* main.m in Sources */,
 				C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */,
+				C448D727220133BF00102BF4 /* ReplyDetailCell.m in Sources */,
 				C4339DE021F83EDB00314BCB /* Member.m in Sources */,
 				C4BB736121F945160026BB06 /* Constants.m in Sources */,
 				C428C4742200265B00AA0542 /* UIView+HSKit.m in Sources */,
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
-				C4BB736521F98C5F0026BB06 /* TopicDetailViewController.m in Sources */,
-				C408663221FAF0A000949CB7 /* TopicDetailCell.m in Sources */,
+				C448D72A2201377700102BF4 /* Reply.m in Sources */,
 				C428C4712200258000AA0542 /* DetailViewController.m in Sources */,
 				C4339DD721F806D100314BCB /* Topic.m in Sources */,
 				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,

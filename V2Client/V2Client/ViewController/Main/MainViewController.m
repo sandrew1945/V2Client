@@ -15,6 +15,8 @@
 #import "MainService.h"
 #import "MainTableViewCell.h"
 #import "DetailViewController.h"
+#import "MJRefreshNormalHeader.h"
+#import "MJRefreshGifHeader.h"
 
 @interface MainViewController ()
 
@@ -34,6 +36,7 @@
     self.tableView.estimatedRowHeight = 44;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self setRefresh];
     [self.tableView registerClass:[MainTableViewCell class] forCellReuseIdentifier:CELL_INDENTIFIER];
     [self getMainPageData];
 }
@@ -108,7 +111,7 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
         [self.manager GET:ALL_TOPIC_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSLog(@"%@---%@",[responseObject class],responseObject);
             MainService *service = [[MainService alloc] init];
-            [service adapterMapping];
+            [service topicHeadAdapterMapping];
             self.topics = [Topic mj_objectArrayWithKeyValuesArray:responseObject];
             NSLog(@"%@---%@",[self.topics class], self.topics);
             [self.tableView reloadData];
@@ -116,12 +119,23 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
             NSLog(@"error");
         }];
 }
-
+#pragma mark MJRefresh
+- (void)setRefresh
+{
+    MJRefreshGifHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    [header setTitle:@"Pull down to refresh" forState:MJRefreshStateIdle];
+    [header setTitle:@"Release to refresh" forState:MJRefreshStatePulling];
+    [header setTitle:@"Loading ..." forState:MJRefreshStateRefreshing];
+    self.tableView.header = header;
+    
+}
 
 #pragma mark Actions
-- (void)clickTopic:(id)sender
+- (void)loadMoreData
 {
-    
+    NSLog(@"loading ..............");
+    [self getMainPageData];
+    [self.tableView.mj_header endRefreshing];
 }
 
 /*
