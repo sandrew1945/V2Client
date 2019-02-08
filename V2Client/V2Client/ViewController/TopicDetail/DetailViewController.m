@@ -212,6 +212,11 @@ static NSString *CELL_INDENTIFIER = @"cell";
     [cell.avatarImageView setImageWithURL:url placeholderImage:nil];
     // 发帖人
     cell.userName.text = cellReply.member.username;
+    // 楼层
+    cell.floor.text = [NSString stringWithFormat:@"%ld楼", (long)[indexPath section]];
+    // 回复时间
+    MainService *mainService = [[MainService alloc] init];
+    cell.replyTime.text = [mainService handleTimeDifference:cellReply.replyTime];
     // 回复内容
     cell.reply.text = [cellReply content];
     return cell;

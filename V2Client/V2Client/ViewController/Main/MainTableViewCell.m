@@ -48,6 +48,31 @@
             //make.width.equalTo(@200);
             make.height.equalTo(@21);
         }];
+        
+        // 添加最后回复时间
+        self.lastReplyTime = [[UILabel alloc] init];
+        [self.lastReplyTime setFont:[UIFont systemFontOfSize:10.0f]];
+        [self.lastReplyTime setTextColor:[UIColor grayColor]];
+        [self.lastReplyTime sizeToFit];
+        [self addSubview:self.lastReplyTime];
+        [self.lastReplyTime mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.avatarImageView.mas_bottom);
+            make.left.equalTo(self.avatarImageView.mas_right).with.offset(10);
+            //make.width.equalTo(@200);
+            make.height.equalTo(@21);
+        }];
+        // 添加最后回复人
+        self.lastReplyBy = [[UILabel alloc] init];
+        [self.lastReplyBy setFont:[UIFont systemFontOfSize:10.0f]];
+        [self.lastReplyBy setTextColor:[UIColor grayColor]];
+        [self.lastReplyBy sizeToFit];
+        [self addSubview:self.lastReplyBy];
+        [self.lastReplyBy mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.avatarImageView.mas_bottom);
+            make.left.equalTo(self.lastReplyTime.mas_right).with.offset(10);
+            //make.width.equalTo(@200);
+            make.height.equalTo(@21);
+        }];
         // 添加帖子标题
         self.topic = [[UILabel alloc] init];
         [self.topic setFont:[UIFont systemFontOfSize:14.0f]];
@@ -74,7 +99,7 @@
         [self addSubview:self.msgCount];
         [self.msgCount mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.avatarImageView.mas_top);
-            make.left.equalTo(self.msgIcon.mas_right).with.offset(5);
+            make.left.equalTo(self.msgIcon.mas_right).with.offset(2);
 //            make.width.equalTo(@20);
             make.height.equalTo(@20);
         }];

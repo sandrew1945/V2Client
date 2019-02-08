@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UILabel *node;
 @property (strong, nonatomic) UIImageView *msgIcon;
 @property (strong, nonatomic) UILabel *msgCount;
+@property (strong, nonatomic) UILabel *lastReplyTime;
+@property (strong, nonatomic) UILabel *lastReplyBy;
 
 @end
 

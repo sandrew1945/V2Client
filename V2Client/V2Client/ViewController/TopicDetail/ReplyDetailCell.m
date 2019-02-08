@@ -48,7 +48,30 @@
             //make.width.equalTo(@100);
             make.height.equalTo(@21);
         }];
-        
+        // 添加楼层View
+        self.floor = [[UILabel alloc] init];
+        [self.floor setFont:[UIFont systemFontOfSize:10.0f]];
+        self.floor.textColor = [UIColor grayColor];
+        [self.floor sizeToFit];
+        [self addSubview:self.floor];
+        [self.floor mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.avatarImageView.mas_bottom);
+            make.left.equalTo(self.avatarImageView.mas_right).with.offset(10);
+            //make.width.equalTo(@100);
+            make.height.equalTo(@21);
+        }];
+        // 添加回复时间View
+        self.replyTime = [[UILabel alloc] init];
+        [self.replyTime setFont:[UIFont systemFontOfSize:10.0f]];
+        self.replyTime.textColor = [UIColor grayColor];
+        [self.replyTime sizeToFit];
+        [self addSubview:self.replyTime];
+        [self.replyTime mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.avatarImageView.mas_bottom);
+            make.left.equalTo(self.floor.mas_right).with.offset(5);
+            //make.width.equalTo(@100);
+            make.height.equalTo(@21);
+        }];
         // 添加回复内容
         self.reply = [[UILabel alloc] init];
         self.reply.numberOfLines = 0;

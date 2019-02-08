@@ -22,7 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)topicHeadAdapterMapping;
 
-- (void) topicReplyAdapterMapping;
+- (void)topicReplyAdapterMapping;
+
+- (NSString *)handleTimeDifference:(NSString *)timestamp;
 @end
 
 NS_ASSUME_NONNULL_END

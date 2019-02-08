@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MainViewController : UITableViewController
 
-@property (strong, nonatomic) NSArray *topics;
-@property (strong, nonatomic) AFHTTPSessionManager *manager;
+@property (strong, nonatomic) NSMutableArray        *topics;
+@property (strong, nonatomic) AFHTTPSessionManager  *manager;
 
 @end
 

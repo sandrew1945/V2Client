@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) UIImageView *avatarImageView;
 @property (strong, nonatomic) UILabel *userName;
+@property (strong, nonatomic) UILabel *floor;
+@property (strong, nonatomic) UILabel *replyTime;
 @property (strong, nonatomic) UILabel *reply;
 
 @end

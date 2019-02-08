@@ -14,12 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Topic : NSObject
 
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *topicId;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *content;
 @property (strong, nonatomic) NSString *contentRendered;
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *replies;
+@property (strong, nonatomic) NSString *lastReplyTime;
+@property (strong, nonatomic) NSString *lastReplyBy;
 @property (strong, nonatomic) Node *node;
 @property (strong, nonatomic) Member *member;
 

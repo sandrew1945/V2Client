@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Member    *member;
 @property (strong, nonatomic) NSString  *content;
 @property (strong, nonatomic) NSString  *contentRendered;
+@property (strong, nonatomic) NSString  *replyTime;
 
 @end
 

@@ -17,12 +17,22 @@
 #import "DetailViewController.h"
 #import "MJRefreshNormalHeader.h"
 #import "MJRefreshGifHeader.h"
+#import "MJRefreshAutoNormalFooter.h"
+#import "MJRefreshAutoGifFooter.h"
+
 
 @interface MainViewController ()
 
 @end
 
 @implementation MainViewController
+
+-(instancetype)initWithStyle:(UITableViewStyle)style{
+    if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+        
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,6 +79,14 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
     [cell.avatarImageView setImageWithURL:url placeholderImage:nil];
     // 发帖人
     cell.userName.text = cellTopic.member.username;
+    // 最后回复人，回复时间
+    MainService *mainService = [[MainService alloc] init];
+    cell.lastReplyTime.text = [mainService handleTimeDifference:cellTopic.lastReplyTime];
+    if (nil != cellTopic.lastReplyBy && cellTopic.lastReplyBy.length != 0)
+    {
+        cell.lastReplyBy.text = [@"•    最后回复 " stringByAppendingString:cellTopic.lastReplyBy];
+    }
+    
     // 标题
     cell.topic.numberOfLines = 0;
     cell.topic.text = cellTopic.title;
@@ -84,18 +102,25 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
 //    TopicDetailViewController *subViewController = [[TopicDetailViewController alloc] init];
     DetailViewController *subViewController = [[DetailViewController alloc] init];
     Topic *selectedTopic = [self.topics objectAtIndex:[indexPath section]];
-    subViewController.topicId = selectedTopic.id;
+    subViewController.topicId = selectedTopic.topicId;
     [self.navigationController pushViewController:subViewController animated:YES];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
-{
-    return @" ";
+-(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.0001f)];
+    return view;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.0001f;
 }
 
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.0001f)];
+    return view;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 5;
+    return 0.0001;
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,35 +132,87 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
 #pragma mark - fetch data
 - (void)getMainPageData
 {
-        self.manager = [AFHTTPSessionManager manager];
+        if (!self.manager)
+        {
+            self.manager = [AFHTTPSessionManager manager];
+        }
         [self.manager GET:ALL_TOPIC_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSLog(@"%@---%@",[responseObject class],responseObject);
             MainService *service = [[MainService alloc] init];
             [service topicHeadAdapterMapping];
             self.topics = [Topic mj_objectArrayWithKeyValuesArray:responseObject];
-            NSLog(@"%@---%@",[self.topics class], self.topics);
             [self.tableView reloadData];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"error");
         }];
 }
+
+- (void)getMoreData
+{
+    // 将原帖子变为set
+    NSSet *set = [[NSSet alloc] init];
+    for (int i = 0; i < [self.topics count]; i++)
+    {
+        Topic *tmp = [self.topics objectAtIndex:i];
+        set = [set setByAddingObject:tmp.topicId];
+    }
+    // 请求新的帖子
+    if (!self.manager)
+    {
+        self.manager = [AFHTTPSessionManager manager];
+    }
+    [self.manager GET:ALL_TOPIC_URL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        MainService *service = [[MainService alloc] init];
+        [service topicHeadAdapterMapping];
+        NSMutableArray *moreTopics = [Topic mj_objectArrayWithKeyValuesArray:responseObject];
+    // 与topics合并
+        __block Topic *tmpTopic = nil;
+        long moreTopicCount = [moreTopics count];
+        for (long i = (moreTopicCount - 1); i >= 0; i--)
+        {
+            tmpTopic = [moreTopics objectAtIndex:i];
+            if ([set containsObject:tmpTopic.topicId])
+            {
+                NSLog(@"i ====%ld", i);
+                NSLog(@"moreTopics -------- %ld", [moreTopics count]);
+                [moreTopics removeObject:tmpTopic];
+            }
+        }
+        [self.topics addObjectsFromArray:moreTopics];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error");
+    }];
+}
 #pragma mark MJRefresh
 - (void)setRefresh
 {
-    MJRefreshGifHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    // 下拉刷新
+    MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(reloadAllData)];
     [header setTitle:@"Pull down to refresh" forState:MJRefreshStateIdle];
     [header setTitle:@"Release to refresh" forState:MJRefreshStatePulling];
     [header setTitle:@"Loading ..." forState:MJRefreshStateRefreshing];
-    self.tableView.header = header;
-    
+    self.tableView.mj_header = header;
+    // 上拉更多
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+    [footer setTitle:@"Click or drag up to refresh" forState:MJRefreshStateIdle];
+    [footer setTitle:@"Loading more ..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"No more data" forState:MJRefreshStateNoMoreData];
+    self.tableView.mj_footer = footer;
 }
 
 #pragma mark Actions
-- (void)loadMoreData
+- (void)reloadAllData
 {
-    NSLog(@"loading ..............");
+    NSLog(@"reloading ..............");
     [self getMainPageData];
     [self.tableView.mj_header endRefreshing];
+}
+
+- (void)loadMoreData
+{
+    NSLog(@"loading more ..............");
+    [self getMoreData];
+    [self.tableView.mj_footer endRefreshing];
+    [self.tableView reloadData];
 }
 
 /*

@@ -29,7 +29,10 @@
 {
     [Topic mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{
-                 @"contentRendered" : @"content_rendered"
+                 @"topicId"         : @"id",
+                 @"contentRendered" : @"content_rendered",
+                 @"lastReplyTime"   : @"last_modified",
+                 @"lastReplyBy"     : @"last_reply_by"
                  };
     }];
     [Member mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
@@ -45,9 +48,33 @@
 {
     [Reply mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
         return @{
-                 @"contentRendered" : @"content_rendered"
+                 @"contentRendered" : @"content_rendered",
+                 @"replyTime"       : @"last_modified"
                  };
     }];
 }
 
+
+- (NSString *)handleTimeDifference:(NSString *)timestamp
+{
+    double orginTimestamp = [timestamp doubleValue];//传入的时间戳str如果是精确到毫秒的记得要/1000
+    double currentTimestamp = [[NSDate date] timeIntervalSince1970];
+    long minute = (currentTimestamp - orginTimestamp) / 60;
+    if (minute < 60)
+    {
+        return [NSString stringWithFormat:@"%ld分钟以前", minute];
+    }
+    else if(minute >= 60)
+    {
+        long hours = minute / 60;
+        long andMinute = minute % 60;
+        return [NSString stringWithFormat:@"%ld小时%ld分钟以前", hours, andMinute];
+    }
+    else if(minute >= (60*24))
+    {
+        long days = minute / (60*24);
+        return [NSString stringWithFormat:@"%ld天以前", days];
+    }
+    return @"";
+}
 @end
