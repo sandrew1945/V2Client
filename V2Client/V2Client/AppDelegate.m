@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "MMDrawerController.h"
+#import "LeftMenuView.h"
+#import "LeftMenuController.h"
+#import "V2exUser.h"
+#import "V2exControllerHolder.h"
 
 @interface AppDelegate ()
 
@@ -21,8 +26,26 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     MainViewController *mainController = [[MainViewController alloc] init];
     mainController.title = @"V2EX";
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainController];
+    //self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainController];
     
+    /*********************************************************************/
+    UINavigationController *mainContainer = [[UINavigationController alloc] initWithRootViewController:mainController];
+    LeftMenuController *leftDrawer = [[LeftMenuController alloc] init];
+    //leftDrawer.view = [[LeftMenuView alloc] init];
+    UIViewController * rightDrawer = [[UIViewController alloc] init];
+    rightDrawer.view.backgroundColor = [UIColor greenColor];
+    
+    MMDrawerController *drawerController = [[MMDrawerController alloc]
+                                             initWithCenterViewController:mainContainer
+                                             leftDrawerViewController:leftDrawer
+                                             rightDrawerViewController:rightDrawer];
+    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    self.window.rootViewController = drawerController;
+    [V2exControllerHolder shareInstance].centerViewController = mainContainer;
+    [V2exControllerHolder shareInstance].drawerController = drawerController;
+    /*********************************************************************/
+
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -21,10 +21,19 @@
 		C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDC21F83E4200314BCB /* MainTableViewCell.m */; };
 		C4339DE021F83EDB00314BCB /* Member.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DDF21F83EDB00314BCB /* Member.m */; };
 		C4339DE621F8402F00314BCB /* MainService.m in Sources */ = {isa = PBXBuildFile; fileRef = C4339DE521F8402F00314BCB /* MainService.m */; };
+		C436337E2213B301006739B4 /* V2exUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C436337D2213B301006739B4 /* V2exUser.m */; };
+		C43633812213EA7A006739B4 /* V2exControllerHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = C43633802213EA7A006739B4 /* V2exControllerHolder.m */; };
+		C43633852213ECFB006739B4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43633842213ECFB006739B4 /* LoginViewController.m */; };
+		C43633892213EDFB006739B4 /* 32.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C43633872213EDFB006739B4 /* 32.jpg */; };
+		C436338A2213EDFB006739B4 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C43633882213EDFB006739B4 /* 12.jpg */; };
 		C448D727220133BF00102BF4 /* ReplyDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C448D726220133BF00102BF4 /* ReplyDetailCell.m */; };
 		C448D72A2201377700102BF4 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = C448D7292201377700102BF4 /* Reply.m */; };
+		C46611B52212A73200A96ECB /* LeftMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46611B42212A73200A96ECB /* LeftMenuController.m */; };
+		C46611BC2212AA9600A96ECB /* V2exColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C46611BB2212AA9600A96ECB /* V2exColor.m */; };
+		C46611C22212AF5B00A96ECB /* UserHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46611C12212AF5B00A96ECB /* UserHeaderCell.m */; };
 		C4BB736121F945160026BB06 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736021F945160026BB06 /* Constants.m */; };
 		C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D24F6C21F742C100C18731 /* MainViewController.m */; };
+		C4D538A622115F8200EA7D14 /* LeftMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D538A522115F8200EA7D14 /* LeftMenuView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,13 +65,29 @@
 		C4339DE421F8402F00314BCB /* MainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainService.h; sourceTree = "<group>"; };
 		C4339DE521F8402F00314BCB /* MainService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainService.m; sourceTree = "<group>"; };
 		C4339DE921F855EC00314BCB /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C436337C2213B301006739B4 /* V2exUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = V2exUser.h; sourceTree = "<group>"; };
+		C436337D2213B301006739B4 /* V2exUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V2exUser.m; sourceTree = "<group>"; };
+		C436337F2213EA7A006739B4 /* V2exControllerHolder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = V2exControllerHolder.h; sourceTree = "<group>"; };
+		C43633802213EA7A006739B4 /* V2exControllerHolder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V2exControllerHolder.m; sourceTree = "<group>"; };
+		C43633832213ECFB006739B4 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C43633842213ECFB006739B4 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C43633872213EDFB006739B4 /* 32.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 32.jpg; sourceTree = "<group>"; };
+		C43633882213EDFB006739B4 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
 		C448D726220133BF00102BF4 /* ReplyDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyDetailCell.m; sourceTree = "<group>"; };
 		C448D7282201377700102BF4 /* Reply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reply.h; sourceTree = "<group>"; };
 		C448D7292201377700102BF4 /* Reply.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reply.m; sourceTree = "<group>"; };
+		C46611B32212A73200A96ECB /* LeftMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuController.h; sourceTree = "<group>"; };
+		C46611B42212A73200A96ECB /* LeftMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuController.m; sourceTree = "<group>"; };
+		C46611BA2212AA9600A96ECB /* V2exColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = V2exColor.h; sourceTree = "<group>"; };
+		C46611BB2212AA9600A96ECB /* V2exColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V2exColor.m; sourceTree = "<group>"; };
+		C46611C02212AF5B00A96ECB /* UserHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserHeaderCell.h; sourceTree = "<group>"; };
+		C46611C12212AF5B00A96ECB /* UserHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserHeaderCell.m; sourceTree = "<group>"; };
 		C4BB735F21F945160026BB06 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C4BB736021F945160026BB06 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C4D24F6B21F742C100C18731 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C4D24F6C21F742C100C18731 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C4D538A422115F8200EA7D14 /* LeftMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuView.h; sourceTree = "<group>"; };
+		C4D538A522115F8200EA7D14 /* LeftMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftMenuView.m; sourceTree = "<group>"; };
 		EEECFC101CD3B3D8C1CFF595 /* libPods-V2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-V2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,11 +132,13 @@
 		C40C319E21F73BF600109E4A /* V2Client */ = {
 			isa = PBXGroup;
 			children = (
+				C46611B62212A9FB00A96ECB /* Common */,
 				C428C4752200266D00AA0542 /* Extend */,
 				C4339DE821F855C600314BCB /* Resources */,
 				C4339DE121F83FE500314BCB /* Service */,
 				C4339DD421F8068400314BCB /* Module */,
 				C4D24F6A21F7429900C18731 /* ViewController */,
+				C46611B12212A61000A96ECB /* View */,
 				C40C319F21F73BF600109E4A /* AppDelegate.h */,
 				C40C31A021F73BF600109E4A /* AppDelegate.m */,
 				C40C31A221F73BF600109E4A /* ViewController.h */,
@@ -180,11 +207,60 @@
 		C4339DE821F855C600314BCB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C43633862213EDA2006739B4 /* images */,
 				C4339DE921F855EC00314BCB /* PrefixHeader.pch */,
 				C4BB735F21F945160026BB06 /* Constants.h */,
 				C4BB736021F945160026BB06 /* Constants.m */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		C43633822213ECDA006739B4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C43633832213ECFB006739B4 /* LoginViewController.h */,
+				C43633842213ECFB006739B4 /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C43633862213EDA2006739B4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C43633882213EDFB006739B4 /* 12.jpg */,
+				C43633872213EDFB006739B4 /* 32.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		C46611B12212A61000A96ECB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4D538A322115C4200EA7D14 /* LeftMenu */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C46611B22212A67500A96ECB /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C46611B32212A73200A96ECB /* LeftMenuController.h */,
+				C46611B42212A73200A96ECB /* LeftMenuController.m */,
+			);
+			path = LeftMenu;
+			sourceTree = "<group>";
+		};
+		C46611B62212A9FB00A96ECB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C46611BA2212AA9600A96ECB /* V2exColor.h */,
+				C46611BB2212AA9600A96ECB /* V2exColor.m */,
+				C436337C2213B301006739B4 /* V2exUser.h */,
+				C436337D2213B301006739B4 /* V2exUser.m */,
+				C436337F2213EA7A006739B4 /* V2exControllerHolder.h */,
+				C43633802213EA7A006739B4 /* V2exControllerHolder.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		C4BB736221F98C2F0026BB06 /* TopicDetail */ = {
@@ -201,10 +277,23 @@
 		C4D24F6A21F7429900C18731 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C43633822213ECDA006739B4 /* Login */,
+				C46611B22212A67500A96ECB /* LeftMenu */,
 				C4BB736221F98C2F0026BB06 /* TopicDetail */,
 				C4339DE221F83FF700314BCB /* Main */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C4D538A322115C4200EA7D14 /* LeftMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C4D538A422115F8200EA7D14 /* LeftMenuView.h */,
+				C4D538A522115F8200EA7D14 /* LeftMenuView.m */,
+				C46611C02212AF5B00A96ECB /* UserHeaderCell.h */,
+				C46611C12212AF5B00A96ECB /* UserHeaderCell.m */,
+			);
+			path = LeftMenu;
 			sourceTree = "<group>";
 		};
 		DF1A0A9DC8B24C56E3ED99B9 /* Pods */ = {
@@ -275,8 +364,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C436338A2213EDFB006739B4 /* 12.jpg in Resources */,
 				C40C31AC21F73BF700109E4A /* LaunchScreen.storyboard in Resources */,
 				C40C31A921F73BF700109E4A /* Assets.xcassets in Resources */,
+				C43633892213EDFB006739B4 /* 32.jpg in Resources */,
 				C40C31A721F73BF600109E4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,15 +429,22 @@
 				C40C31A421F73BF600109E4A /* ViewController.m in Sources */,
 				C4339DE621F8402F00314BCB /* MainService.m in Sources */,
 				C40C31AF21F73BF700109E4A /* main.m in Sources */,
+				C46611B52212A73200A96ECB /* LeftMenuController.m in Sources */,
 				C4339DDD21F83E4200314BCB /* MainTableViewCell.m in Sources */,
+				C436337E2213B301006739B4 /* V2exUser.m in Sources */,
+				C46611C22212AF5B00A96ECB /* UserHeaderCell.m in Sources */,
 				C448D727220133BF00102BF4 /* ReplyDetailCell.m in Sources */,
+				C43633812213EA7A006739B4 /* V2exControllerHolder.m in Sources */,
 				C4339DE021F83EDB00314BCB /* Member.m in Sources */,
 				C4BB736121F945160026BB06 /* Constants.m in Sources */,
+				C43633852213ECFB006739B4 /* LoginViewController.m in Sources */,
 				C428C4742200265B00AA0542 /* UIView+HSKit.m in Sources */,
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
+				C4D538A622115F8200EA7D14 /* LeftMenuView.m in Sources */,
 				C448D72A2201377700102BF4 /* Reply.m in Sources */,
 				C428C4712200258000AA0542 /* DetailViewController.m in Sources */,
 				C4339DD721F806D100314BCB /* Topic.m in Sources */,
+				C46611BC2212AA9600A96ECB /* V2exColor.m in Sources */,
 				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,
 				C4339DDA21F8080100314BCB /* Node.m in Sources */,
 			);

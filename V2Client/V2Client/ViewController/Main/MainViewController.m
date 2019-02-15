@@ -56,12 +56,10 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [self.topics count];
-//    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return [self.topics count];
     return 1;
 }
 
