@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface V2exUser : NSObject
 
 @property (strong, nonatomic, nullable) NSString *userName;
+@property (strong, nonatomic)           NSString *avatarPath;
 @property (strong, nonatomic, nullable) NSString *once;
 
 + (instancetype)shareInstance;

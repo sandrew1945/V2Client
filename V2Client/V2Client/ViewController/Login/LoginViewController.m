@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "Constants.h"
 #import "TFHpple.h"
+#import "V2exUser.h"
 
 @interface LoginViewController ()
 
@@ -291,13 +292,23 @@
     [self.manager POST:LOGIN_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString * htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         TFHpple *htmlParser = [[TFHpple alloc] initWithHTMLData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]];
-        NSLog(@"response html : %@", htmlStr);
+        //NSLog(@"response html : %@", htmlStr);
         // 判断是否有头像，如果有那么登录成功
         
-        NSString *username = [self getAttribute:@"src" FromParse:htmlParser ByXPath:@"//*[@id='Rightbar']/div[2]/div[1]/table[1]/tbody/tr/td[1]/a[1]/img[1]"];
-//        NSString *avatarPath = [self getAttribute:@"src" FromParse:htmlParser ByXPath:@"//*[@id='Top']/div/div/table/tr/td[3]/a[1]/img[1]"];
+        NSString *username = [self getAttribute:@"href" FromParse:htmlParser ByXPath:@"//*[@id='Top']/div/div/table/tr/td[3]/a[1]"];
+        NSString *avatarPath = [self getAttribute:@"src" FromParse:htmlParser ByXPath:@"//*[@id='Top']/div/div/table/tr/td[3]/a[1]/img[1]"];
+
+        if ([username hasPrefix:@"/member/"])
+        {
+            username = [username stringByReplacingOccurrencesOfString:@"/member/" withString:@""];
+        }
+        avatarPath = [@"https:" stringByAppendingString:avatarPath];
         NSLog(@"username : %@", username);
-//        NSLog(@"avatarPath : %@", avatarPath);
+        NSLog(@"avatarPath : %@", avatarPath);
+        [V2exUser shareInstance].avatarPath = avatarPath;
+        [V2exUser shareInstance].userName = username;
+        // 关闭登录页
+        [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"login faild, Error : %@", error);
     }];

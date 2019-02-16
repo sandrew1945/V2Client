@@ -11,6 +11,7 @@
 #import "FBKVOController.h"
 #import "KVOController.h"
 #import "V2exUser.h"
+#import "UIKit+AFNetworking.h"
 
 @implementation UserHeaderCell
 
@@ -67,7 +68,12 @@
         self.KVOController = KVOController;
         [self.KVOController observe:[V2exUser shareInstance] keyPath:@"userName" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
             self.userNameLabel.text = [V2exUser shareInstance].userName ? [V2exUser shareInstance].userName : @"请登录";
-            
+            if (nil != [V2exUser shareInstance].avatarPath && [V2exUser shareInstance].avatarPath.length > 0)
+            {
+                NSLog(@"换头了！！！！！！！%@", [V2exUser shareInstance].avatarPath);
+                NSURL *url = [NSURL URLWithString:[V2exUser shareInstance].avatarPath];
+                [self.avatar setImageWithURL:url placeholderImage:nil];
+            }
         }];
         
     }
