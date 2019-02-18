@@ -328,31 +328,31 @@
         TFHpple *htmlParser = [[TFHpple alloc] initWithHTMLData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]];
         
         // 获取once
+        NSString *onceStr = nil;
         NSArray *elements  = [htmlParser searchWithXPathQuery:@"//*[@name='once'][1]"];
-        TFHppleElement *codeElement = [elements objectAtIndex:0];
-        NSString *onceStr = [codeElement attributes][@"value"];
-        // 获取用户名、密码、验证码输入框的name
-        
-        
-//        self.userNameInputName = jiHtml.xPath("//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[1]/td[2]/input[@class='sl']")?.first?["name"]
-        self.userNameInputName = [self getAttribute:@"name" FromParse:htmlParser ByXPath:@"//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[1]/td[2]/input[@class='sl']"];
-        self.passwordInputName = [self getAttribute:@"name" FromParse:htmlParser ByXPath:@"//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[2]/td[2]/input[@class='sl']"];
-        self.validaCodeInputName = [self getAttribute:@"name" FromParse:htmlParser ByXPath:@"//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[4]/td[2]/input[@class='sl']"];
-        self.once = onceStr;
-        NSLog(@"userNameInputName：%@" , self.userNameInputName);
-        NSLog(@"passwordInputName：%@", self.passwordInputName);
-        NSLog(@"validaCodeInputName：%@", self.validaCodeInputName);
-        NSLog(@"once: %@", onceStr);
-        
-        // 获取验证码图片
-        NSDictionary *params = @{@"once" : onceStr};
-        [self.manager GET:GET_VALIDATE_CODE_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            UIImage *codeImage = [UIImage imageWithData:responseObject];
-            self.validateCodeView.image = codeImage;
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"error: %@", error);
-        }];
-        
+        if ([elements count] > 0)
+        {
+            TFHppleElement *codeElement = [elements objectAtIndex:0];
+            onceStr = [codeElement attributes][@"value"];
+            self.userNameInputName = [self getAttribute:@"name" FromParse:htmlParser ByXPath:@"//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[1]/td[2]/input[@class='sl']"];
+            self.passwordInputName = [self getAttribute:@"name" FromParse:htmlParser ByXPath:@"//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[2]/td[2]/input[@class='sl']"];
+            self.validaCodeInputName = [self getAttribute:@"name" FromParse:htmlParser ByXPath:@"//*[@id='Wrapper']/div/div[1]/div[2]/form/table/tr[4]/td[2]/input[@class='sl']"];
+            self.once = onceStr;
+            // 获取用户名、密码、验证码输入框的name
+            NSLog(@"userNameInputName：%@" , self.userNameInputName);
+            NSLog(@"passwordInputName：%@", self.passwordInputName);
+            NSLog(@"validaCodeInputName：%@", self.validaCodeInputName);
+            NSLog(@"once: %@", onceStr);
+            
+            // 获取验证码图片
+            NSDictionary *params = @{@"once" : onceStr};
+            [self.manager GET:GET_VALIDATE_CODE_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                UIImage *codeImage = [UIImage imageWithData:responseObject];
+                self.validateCodeView.image = codeImage;
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                NSLog(@"error: %@", error);
+            }];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
     }];
