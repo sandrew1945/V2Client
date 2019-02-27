@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0CE7267D5C62CFA21F7B17660671E001"
+               BlueprintIdentifier = "CDAFC49E9DE1B8773B574D056B069A7B"
                BlueprintName = "TFHpple"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libTFHpple.a">

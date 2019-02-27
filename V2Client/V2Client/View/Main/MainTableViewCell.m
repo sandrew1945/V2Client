@@ -8,6 +8,8 @@
 
 #import "MainTableViewCell.h"
 #import "Masonry.h"
+#import "MemberViewController.h"
+#import "V2exControllerHolder.h"
 
 @implementation MainTableViewCell
 
@@ -37,6 +39,11 @@
             make.top.equalTo(self.mas_top).with.offset(10);
             make.left.equalTo(self.mas_left).with.offset(10);
         }];
+        [self.avatarImageView setUserInteractionEnabled:true];
+        UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] init];
+        [tgr addTarget:self action:@selector(clickAvatar:)];
+        [self.avatarImageView addGestureRecognizer:tgr];
+        
         // 添加用户名view
         self.userName = [[UILabel alloc] init];
         [self.userName setFont:[UIFont systemFontOfSize:12.0f]];
@@ -121,4 +128,14 @@
     }
     return self;
 }
+
+#pragma mark - Actions
+- (void)clickAvatar:(id)sender
+{
+    MemberViewController *memberViewController = [[MemberViewController alloc] init];
+    memberViewController.memberName = self.userName.text;
+    memberViewController.title = self.userName.text;
+    [[V2exControllerHolder shareInstance].centerViewController pushViewController:memberViewController animated:YES];
+}
+
 @end

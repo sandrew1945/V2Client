@@ -9,10 +9,10 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "MMDrawerController.h"
-#import "LeftMenuView.h"
 #import "LeftMenuController.h"
 #import "V2exUser.h"
 #import "V2exControllerHolder.h"
+#import "HBDNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -29,7 +29,8 @@
     //self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainController];
     
     /*********************************************************************/
-    UINavigationController *mainContainer = [[UINavigationController alloc] initWithRootViewController:mainController];
+    //UINavigationController *mainContainer = [[UINavigationController alloc] initWithRootViewController:mainController];
+    HBDNavigationController *mainContainer = [[HBDNavigationController alloc] initWithRootViewController:mainController];
     LeftMenuController *leftDrawer = [[LeftMenuController alloc] init];
     //leftDrawer.view = [[LeftMenuView alloc] init];
     UIViewController * rightDrawer = [[UIViewController alloc] init];

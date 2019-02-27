@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Reply : NSObject
 
+@property (strong, nonatomic) NSString  *topicId;
+@property (strong, nonatomic) NSString  *topicTitle;
 @property (strong, nonatomic) Member    *member;
 @property (strong, nonatomic) NSString  *content;
 @property (strong, nonatomic) NSString  *contentRendered;

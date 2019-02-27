@@ -32,6 +32,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         if (!_avatar)
         {
@@ -70,7 +71,6 @@
             self.userNameLabel.text = [V2exUser shareInstance].userName ? [V2exUser shareInstance].userName : @"请登录";
             if (nil != [V2exUser shareInstance].avatarPath && [V2exUser shareInstance].avatarPath.length > 0)
             {
-                NSLog(@"换头了！！！！！！！%@", [V2exUser shareInstance].avatarPath);
                 NSURL *url = [NSURL URLWithString:[V2exUser shareInstance].avatarPath];
                 [self.avatar setImageWithURL:url placeholderImage:nil];
             }

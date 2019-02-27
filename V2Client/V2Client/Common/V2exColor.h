@@ -19,6 +19,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)v2_TopicListTitleColor;
 
++ (UIColor *)v2_LeftNodeTintColor;
+
++ (UIImage *)createImageWithColor:(UIColor *)color;
+
++ (UIImage *)createImageWithColor:(UIColor *)color Size:(CGSize)size;
+
++ (UIColor *)colorWithR:(CGFloat)red G:(CGFloat)green B:(CGFloat)blue A:(CGFloat)alpha;
+
 @end
 
 NS_ASSUME_NONNULL_END

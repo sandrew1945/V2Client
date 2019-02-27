@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSString *avatarNormal;
 @property (strong, nonatomic) NSString *avatarLarge;
 @property (strong, nonatomic) NSString *avatarMini;
+@property (strong, nonatomic) NSString *introd;
 
 @end
 

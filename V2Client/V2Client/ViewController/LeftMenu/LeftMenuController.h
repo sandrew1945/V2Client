@@ -10,7 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LeftMenuController : UITableViewController
+@interface LeftMenuController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+
+@property (nonatomic, strong) UIVisualEffectView    *frostedView;
+@property (strong, nonatomic) UIImageView           *backgroundView;
+@property (strong, nonatomic) UIVisualEffectView    *visualEffectView;
+@property (strong, nonatomic) UITableView           *tableView;
 
 @end
 

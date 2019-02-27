@@ -99,6 +99,7 @@ static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
 {
 //    TopicDetailViewController *subViewController = [[TopicDetailViewController alloc] init];
     DetailViewController *subViewController = [[DetailViewController alloc] init];
+    subViewController.title = @"Topic Details";
     Topic *selectedTopic = [self.topics objectAtIndex:[indexPath section]];
     subViewController.topicId = selectedTopic.topicId;
     [self.navigationController pushViewController:subViewController animated:YES];

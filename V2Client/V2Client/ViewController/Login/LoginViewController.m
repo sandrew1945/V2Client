@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "TFHpple.h"
 #import "V2exUser.h"
+#import "SVProgressHUD.h"
 
 @interface LoginViewController ()
 
@@ -263,6 +264,8 @@
 #pragma mark - Actions
 - (void)loginClick:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"正在登录"];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     NSString *inputUserName = self.userName.text;
     NSString *inputPassword = self.password.text;
     NSString *inputValidateCode = self.validateCode.text;
@@ -308,9 +311,11 @@
         [V2exUser shareInstance].avatarPath = avatarPath;
         [V2exUser shareInstance].userName = username;
         // 关闭登录页
+        [SVProgressHUD dismiss];
         [self dismissViewControllerAnimated:YES completion:nil];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"login faild, Error : %@", error);
+        [SVProgressHUD showErrorWithStatus:@"登录失败"];
     }];
 }
 
@@ -351,10 +356,12 @@
                 self.validateCodeView.image = codeImage;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 NSLog(@"error: %@", error);
+                [SVProgressHUD showErrorWithStatus:@"加载失败"];
             }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"error: %@", error);
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
 }
 
