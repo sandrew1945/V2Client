@@ -12,19 +12,19 @@
 
 + (UIColor *)v2_backgroundColor
 {
-    UIColor *color = [UIColor colorWithRed:242 green:243 blue:245 alpha:1];
+    UIColor *color = [UIColor colorWithRed:242/255.0 green:243/255.0 blue:245/255.0 alpha:1];
     return color;
 }
 
 + (UIColor *)v2_navigationBarTintColor
 {
-    UIColor *color = [UIColor colorWithRed:102 green:102 blue:102 alpha:1];
+    UIColor *color = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
     return color;
 }
 
 + (UIColor *)v2_TopicListTitleColor
 {
-    UIColor *color = [UIColor colorWithRed:15 green:15 blue:15 alpha:1];
+    UIColor *color = [UIColor colorWithRed:15/255.0 green:15/255.0 blue:15/255.0 alpha:1];
     return color;
 }
 
@@ -55,20 +55,5 @@
 {
     return [UIColor colorWithRed:(red/255.0) green:(green/255.0) blue:(blue/255.0) alpha:alpha];
 }
-//
-//func createImageWithColor(_ color:UIColor) -> UIImage{
-//    return createImageWithColor(color, size: CGSize(width: 1, height: 1))
-//}
-//func createImageWithColor(_ color:UIColor,size:CGSize) -> UIImage {
-//    let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-//    UIGraphicsBeginImageContext(rect.size);
-//    let context = UIGraphicsGetCurrentContext();
-//    context?.setFillColor(color.cgColor);
-//    context?.fill(rect);
-//
-//    let theImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return theImage!;
-//}
 
 @end

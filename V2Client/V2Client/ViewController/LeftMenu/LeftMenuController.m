@@ -14,6 +14,8 @@
 #import "UserSettingCell.h"
 #import "LoginViewController.h"
 #import "Masonry.h"
+#import "MyViewController.h"
+#import "NotificationViewController.h"
 
 @interface LeftMenuController ()
 
@@ -109,24 +111,47 @@ static NSString *NODE_CELL = @"nodeCellIdentifier";
         {
             if (![[V2exUser shareInstance] isLogin])
             {
-                LoginViewController *loginViewController = [[LoginViewController alloc] init];
-                [[V2exControllerHolder shareInstance].centerViewController presentViewController:loginViewController animated:YES completion:nil];
+                [self showLogin];
             }
+            else
+            {
+                [self showMyCenter];
+            }
+            break;
         }
         case 1:
         {
             if (![[V2exUser shareInstance] isLogin])
             {
-                LoginViewController *loginViewController = [[LoginViewController alloc] init];
-                [[V2exControllerHolder shareInstance].centerViewController presentViewController:loginViewController animated:YES completion:nil];
+                [self showLogin];
+                break;
+            }
+            else
+            {
+                switch ([indexPath row]) {
+                    case 0:
+                    {
+                        [self showMyCenter];
+                        break;
+                    }
+                    case 1:
+                    {
+                        [self showNotification];
+                        break;
+                    }
+                    case 2:
+                    {
+                        break;
+                    }
+                }
             }
         }
         case 2:
         {
             if (![[V2exUser shareInstance] isLogin])
             {
-                LoginViewController *loginViewController = [[LoginViewController alloc] init];
-                [[V2exControllerHolder shareInstance].centerViewController presentViewController:loginViewController animated:YES completion:nil];
+                [self showLogin];
+                break;
             }
         }
     }
@@ -220,9 +245,31 @@ static NSString *NODE_CELL = @"nodeCellIdentifier";
         make.centerY.equalTo(self.visualEffectView.mas_centerY);
         make.left.equalTo(self.visualEffectView.mas_left);
         //make.centerY.equalTo(self.visualEffectView.mas_centerY);
-        make.width.equalTo(@280);
+        make.width.equalTo(@180);
         make.height.equalTo(self.visualEffectView.mas_height);
     }];
 }
 
+#pragma mark - Actions
+- (void)showMyCenter
+{
+    MemberViewController *memberViewController = [[MemberViewController alloc] init];
+    memberViewController.memberName = [V2exUser shareInstance].userName;
+    memberViewController.title = [V2exUser shareInstance].userName;
+    [[V2exControllerHolder shareInstance].centerViewController pushViewController:memberViewController animated:YES];
+    [[V2exControllerHolder shareInstance].drawerController closeDrawerAnimated:YES completion:nil];
+}
+
+- (void)showLogin
+{
+    LoginViewController *loginViewController = [[LoginViewController alloc] init];
+    [[V2exControllerHolder shareInstance].centerViewController presentViewController:loginViewController animated:YES completion:nil];
+}
+
+- (void)showNotification
+{
+    NotificationViewController *notificationViewController = [[NotificationViewController alloc] init];
+    [[V2exControllerHolder shareInstance].centerViewController pushViewController:notificationViewController animated:YES];
+    [[V2exControllerHolder shareInstance].drawerController closeDrawerAnimated:YES completion:nil];
+}
 @end

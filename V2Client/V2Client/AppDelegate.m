@@ -40,8 +40,9 @@
                                              initWithCenterViewController:mainContainer
                                              leftDrawerViewController:leftDrawer
                                              rightDrawerViewController:rightDrawer];
-    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModeAll;
+    drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningCenterView;
     drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    drawerController.maximumLeftDrawerWidth = 180;
     self.window.rootViewController = drawerController;
     [V2exControllerHolder shareInstance].centerViewController = mainContainer;
     [V2exControllerHolder shareInstance].drawerController = drawerController;

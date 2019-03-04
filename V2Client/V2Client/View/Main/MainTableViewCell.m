@@ -10,6 +10,8 @@
 #import "Masonry.h"
 #import "MemberViewController.h"
 #import "V2exControllerHolder.h"
+#import "UIKit+AFNetworking.h"
+#import "MainService.h"
 
 @implementation MainTableViewCell
 
@@ -127,6 +129,31 @@
         
     }
     return self;
+}
+
+#pragma mark - Bind Data
+- (void)initByTopic:(Topic *)topic
+{
+    // 头像
+    NSURL *url = [NSURL URLWithString:[@"https:" stringByAppendingString:topic.member.avatarNormal]];
+    [self.avatarImageView setImageWithURL:url placeholderImage:nil];
+    // 发帖人
+    self.userName.text = topic.member.username;
+    // 最后回复人，回复时间
+    MainService *mainService = [[MainService alloc] init];
+    self.lastReplyTime.text = [mainService handleTimeDifference:topic.lastReplyTime];
+    if (nil != topic.lastReplyBy && topic.lastReplyBy.length != 0)
+    {
+        self.lastReplyBy.text = [@"•    最后回复 " stringByAppendingString:topic.lastReplyBy];
+    }
+    
+    // 标题
+    self.topic.numberOfLines = 0;
+    self.topic.text = topic.title;
+    // 节点名称
+    self.node.text = topic.node.title;
+    // 回复数
+    self.msgCount.text = topic.replies;
 }
 
 #pragma mark - Actions

@@ -8,6 +8,9 @@
 
 
 #import "V2exUtil.h"
+#import "NetworkingUtil.h"
+#import "SVProgressHUD.h"
+
 @implementation V2exUtil
 
 // 根据XPATH获取属性值
@@ -67,6 +70,31 @@
 {
     NSArray *elements = [parse searchWithXPathQuery:xpath];
     return elements;
+}
+
+// 网络请求GET
++ (void)get:(NSString *)url
+        parameters:(id)parameters
+        success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
+{
+    [[NetworkingUtil shareInstance] get:url parameters:parameters preHandle:^{
+        [SVProgressHUD showWithStatus:@"加载中"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    } progress:nil success:success failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+    }];
+}
+// 网络请求POST
++ (void)post:(NSString *)url
+        parameters:(id)parameters
+        success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
+{
+    [[NetworkingUtil shareInstance] post:url parameters:parameters preHandle:^{
+        [SVProgressHUD showWithStatus:@"加载中"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    } progress:nil success:success failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [SVProgressHUD showErrorWithStatus:@"加载失败"];
+    }];
 }
 
 // 获取焦点

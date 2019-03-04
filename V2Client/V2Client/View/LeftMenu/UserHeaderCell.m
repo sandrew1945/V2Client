@@ -12,6 +12,7 @@
 #import "KVOController.h"
 #import "V2exUser.h"
 #import "UIKit+AFNetworking.h"
+#import "Constants.h"
 
 @implementation UserHeaderCell
 
@@ -49,7 +50,6 @@
             _userNameLabel = [[UILabel alloc] init];
             [_userNameLabel sizeToFit];
         }
-        _userNameLabel.text = @"123123";
         [self addSubview:_avatar];
         [self addSubview:_userNameLabel];
         
@@ -64,20 +64,33 @@
             make.top.equalTo(self.avatar.mas_bottom).with.offset(10);
             make.bottom.equalTo(self.mas_bottom).with.offset(-20);
         }];
-        
-        FBKVOController *KVOController = [FBKVOController controllerWithObserver:self];
-        self.KVOController = KVOController;
-        [self.KVOController observe:[V2exUser shareInstance] keyPath:@"userName" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
-            self.userNameLabel.text = [V2exUser shareInstance].userName ? [V2exUser shareInstance].userName : @"请登录";
-            if (nil != [V2exUser shareInstance].avatarPath && [V2exUser shareInstance].avatarPath.length > 0)
-            {
-                NSURL *url = [NSURL URLWithString:[V2exUser shareInstance].avatarPath];
-                [self.avatar setImageWithURL:url placeholderImage:nil];
-            }
-        }];
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:APP_AVATAR_PATH_KEY])
+        {
+            [V2exUser shareInstance].avatarPath = [[NSUserDefaults standardUserDefaults] objectForKey:APP_AVATAR_PATH_KEY];
+        }
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:APP_USER_NAME_KEY])
+        {
+            [V2exUser shareInstance].userName = [[NSUserDefaults standardUserDefaults] objectForKey:APP_USER_NAME_KEY];
+        }
+
+        [self setupKVO];
         
     }
     return self;
 }
 
+
+- (void)setupKVO
+{
+    FBKVOController *KVOController = [FBKVOController controllerWithObserver:self];
+    self.KVOController = KVOController;
+    [self.KVOController observe:[V2exUser shareInstance] keyPath:@"userName" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionNew block:^(id  _Nullable observer, id  _Nonnull object, NSDictionary<NSString *,id> * _Nonnull change) {
+        self.userNameLabel.text = [V2exUser shareInstance].userName ? [V2exUser shareInstance].userName : @"请登录";
+        if (nil != [V2exUser shareInstance].avatarPath && [V2exUser shareInstance].avatarPath.length > 0)
+        {
+            NSURL *url = [NSURL URLWithString:[V2exUser shareInstance].avatarPath];
+            [self.avatar setImageWithURL:url placeholderImage:nil];
+        }
+    }];
+}
 @end

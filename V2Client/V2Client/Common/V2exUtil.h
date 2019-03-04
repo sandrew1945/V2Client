@@ -24,6 +24,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getContentFromElement:(TFHppleElement *)element ByXpath:(NSString *)xpath;
 // 根据XPATH获取下面所有节点
 + (NSArray *)getElementsFromParse:(TFHpple *)parse ByXpath:(NSString *)xpath;
+// 网络请求GET
++ (void)get:(NSString *)url
+        parameters:(id)parameters
+        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success;
+// 网络请求POST
++ (void)post:(NSString *)url
+        parameters:(id)parameters
+        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success;
 // 获取焦点
 + (void)onFucus:(UIView *)input;
 

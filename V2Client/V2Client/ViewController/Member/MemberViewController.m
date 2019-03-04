@@ -39,12 +39,13 @@ static NSString *CELL_MEMBER_REPLY = @"memberReplyIdentifier";
     [super viewDidLoad];
     // 隐藏NavigationBar的title
     self.hbd_titleTextAttributes = @{ NSForegroundColorAttributeName: [UIColor.blackColor colorWithAlphaComponent:0] };
+    // 设置NavigationBar alpha变化过程高度
+    _gradientProgress = 100;
     // 初始化对象
     if (!self.member)
     {
         self.member = [[Member alloc] init];
     }
-    _gradientProgress = 100;
     if (!self.manager)
     {
         if (!self.manager)
@@ -138,6 +139,10 @@ static NSString *CELL_MEMBER_REPLY = @"memberReplyIdentifier";
 {
     NSString *topicId = nil;
     switch ([indexPath section]) {
+        case 0:
+        {
+            return;
+        }
         case 1:
         {
             topicId = [self.topicList objectAtIndex:[indexPath row]].topicId;

@@ -30,6 +30,9 @@
 		C448D72A2201377700102BF4 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = C448D7292201377700102BF4 /* Reply.m */; };
 		C4557D0A221CDE1C00612B58 /* MemberInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4557D09221CDE1C00612B58 /* MemberInfoCell.m */; };
 		C4593FBA221BA0B800EAABDB /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4593FB9221BA0B800EAABDB /* MemberViewController.m */; };
+		C4630A672227804F00F62A57 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4630A662227804F00F62A57 /* MyViewController.m */; };
+		C4630A6B2227B71400F62A57 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4630A6A2227B71400F62A57 /* NotificationViewController.m */; };
+		C4630A6F2227B7CC00F62A57 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4630A6E2227B7CC00F62A57 /* NotificationViewCell.m */; };
 		C463D348221E4B7600EC63F9 /* V2exUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C463D347221E4B7600EC63F9 /* V2exUtil.m */; };
 		C46611B52212A73200A96ECB /* LeftMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46611B42212A73200A96ECB /* LeftMenuController.m */; };
 		C46611BC2212AA9600A96ECB /* V2exColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C46611BB2212AA9600A96ECB /* V2exColor.m */; };
@@ -37,6 +40,8 @@
 		C478F19D221FC172007D8CDE /* MemberTopicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C478F19C221FC172007D8CDE /* MemberTopicCell.m */; };
 		C478F1A0221FE226007D8CDE /* MemberComentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C478F19F221FE226007D8CDE /* MemberComentCell.m */; };
 		C48381AC221A7B0E005E26D5 /* UserSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48381AB221A7B0E005E26D5 /* UserSettingCell.m */; };
+		C48C4400222CBB2C009EA866 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C43FF222CBB2C009EA866 /* FavoritesViewController.m */; };
+		C48C4403222CC0B7009EA866 /* NetworkingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C4402222CC0B7009EA866 /* NetworkingUtil.m */; };
 		C4BB736121F945160026BB06 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736021F945160026BB06 /* Constants.m */; };
 		C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D24F6C21F742C100C18731 /* MainViewController.m */; };
 /* End PBXBuildFile section */
@@ -85,6 +90,12 @@
 		C4557D09221CDE1C00612B58 /* MemberInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberInfoCell.m; sourceTree = "<group>"; };
 		C4593FB8221BA0B800EAABDB /* MemberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
 		C4593FB9221BA0B800EAABDB /* MemberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
+		C4630A652227804F00F62A57 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		C4630A662227804F00F62A57 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		C4630A692227B71400F62A57 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		C4630A6A2227B71400F62A57 /* NotificationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		C4630A6D2227B7CC00F62A57 /* NotificationViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewCell.h; sourceTree = "<group>"; };
+		C4630A6E2227B7CC00F62A57 /* NotificationViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationViewCell.m; sourceTree = "<group>"; };
 		C463D346221E4B7600EC63F9 /* V2exUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = V2exUtil.h; sourceTree = "<group>"; };
 		C463D347221E4B7600EC63F9 /* V2exUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V2exUtil.m; sourceTree = "<group>"; };
 		C46611B32212A73200A96ECB /* LeftMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftMenuController.h; sourceTree = "<group>"; };
@@ -99,6 +110,10 @@
 		C478F19F221FE226007D8CDE /* MemberComentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberComentCell.m; sourceTree = "<group>"; };
 		C48381AA221A7B0E005E26D5 /* UserSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserSettingCell.h; sourceTree = "<group>"; };
 		C48381AB221A7B0E005E26D5 /* UserSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSettingCell.m; sourceTree = "<group>"; };
+		C48C43FE222CBB2C009EA866 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		C48C43FF222CBB2C009EA866 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		C48C4401222CC0B7009EA866 /* NetworkingUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingUtil.h; sourceTree = "<group>"; };
+		C48C4402222CC0B7009EA866 /* NetworkingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingUtil.m; sourceTree = "<group>"; };
 		C4BB735F21F945160026BB06 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C4BB736021F945160026BB06 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C4D24F6B21F742C100C18731 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -264,6 +279,8 @@
 			children = (
 				C4593FB8221BA0B800EAABDB /* MemberViewController.h */,
 				C4593FB9221BA0B800EAABDB /* MemberViewController.m */,
+				C4630A652227804F00F62A57 /* MyViewController.h */,
+				C4630A662227804F00F62A57 /* MyViewController.m */,
 			);
 			path = Member;
 			sourceTree = "<group>";
@@ -277,9 +294,28 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		C4630A682227B6E800F62A57 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				C4630A692227B71400F62A57 /* NotificationViewController.h */,
+				C4630A6A2227B71400F62A57 /* NotificationViewController.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		C4630A6C2227B7A700F62A57 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				C4630A6D2227B7CC00F62A57 /* NotificationViewCell.h */,
+				C4630A6E2227B7CC00F62A57 /* NotificationViewCell.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		C46611B12212A61000A96ECB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C4630A6C2227B7A700F62A57 /* Notification */,
 				C4557D07221CDDF700612B58 /* Member */,
 				C4593FBB221BD1F300EAABDB /* Main */,
 				C4D538A322115C4200EA7D14 /* LeftMenu */,
@@ -307,8 +343,19 @@
 				C43633802213EA7A006739B4 /* V2exControllerHolder.m */,
 				C463D346221E4B7600EC63F9 /* V2exUtil.h */,
 				C463D347221E4B7600EC63F9 /* V2exUtil.m */,
+				C48C4401222CC0B7009EA866 /* NetworkingUtil.h */,
+				C48C4402222CC0B7009EA866 /* NetworkingUtil.m */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		C48C43FD222CBAB6009EA866 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				C48C43FE222CBB2C009EA866 /* FavoritesViewController.h */,
+				C48C43FF222CBB2C009EA866 /* FavoritesViewController.m */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		C4BB736221F98C2F0026BB06 /* TopicDetail */ = {
@@ -325,6 +372,8 @@
 		C4D24F6A21F7429900C18731 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C48C43FD222CBAB6009EA866 /* Favorites */,
+				C4630A682227B6E800F62A57 /* Notification */,
 				C4593FB7221BA07300EAABDB /* Member */,
 				C43633822213ECDA006739B4 /* Login */,
 				C46611B22212A67500A96ECB /* LeftMenu */,
@@ -489,6 +538,7 @@
 				C43633812213EA7A006739B4 /* V2exControllerHolder.m in Sources */,
 				C4339DE021F83EDB00314BCB /* Member.m in Sources */,
 				C4BB736121F945160026BB06 /* Constants.m in Sources */,
+				C48C4403222CC0B7009EA866 /* NetworkingUtil.m in Sources */,
 				C43633852213ECFB006739B4 /* LoginViewController.m in Sources */,
 				C428C4742200265B00AA0542 /* UIView+HSKit.m in Sources */,
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
@@ -497,7 +547,11 @@
 				C428C4712200258000AA0542 /* DetailViewController.m in Sources */,
 				C4339DD721F806D100314BCB /* Topic.m in Sources */,
 				C478F1A0221FE226007D8CDE /* MemberComentCell.m in Sources */,
+				C48C4400222CBB2C009EA866 /* FavoritesViewController.m in Sources */,
 				C4557D0A221CDE1C00612B58 /* MemberInfoCell.m in Sources */,
+				C4630A6F2227B7CC00F62A57 /* NotificationViewCell.m in Sources */,
+				C4630A6B2227B71400F62A57 /* NotificationViewController.m in Sources */,
+				C4630A672227804F00F62A57 /* MyViewController.m in Sources */,
 				C46611BC2212AA9600A96ECB /* V2exColor.m in Sources */,
 				C478F19D221FC172007D8CDE /* MemberTopicCell.m in Sources */,
 				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,

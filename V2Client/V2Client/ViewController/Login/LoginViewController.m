@@ -293,6 +293,12 @@
     [self.manager.requestSerializer setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4" forHTTPHeaderField:@"user-agent"];
     [self.manager.requestSerializer setValue:@"https://v2ex.com/signin" forHTTPHeaderField:@"Referer"];
     [self.manager POST:LOGIN_URL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+        NSHTTPURLResponse* response = (NSHTTPURLResponse* )task.response;
+        NSDictionary *allHeaderFieldsDic = response.allHeaderFields;
+        NSString *setCookie = allHeaderFieldsDic[@"Set-Cookie"];
+        
         NSString * htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         TFHpple *htmlParser = [[TFHpple alloc] initWithHTMLData:[htmlStr dataUsingEncoding:NSUTF8StringEncoding]];
         //NSLog(@"response html : %@", htmlStr);
@@ -310,6 +316,8 @@
         NSLog(@"avatarPath : %@", avatarPath);
         [V2exUser shareInstance].avatarPath = avatarPath;
         [V2exUser shareInstance].userName = username;
+        [[NSUserDefaults standardUserDefaults] setObject:avatarPath forKey:APP_AVATAR_PATH_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:username forKey:APP_USER_NAME_KEY];
         // 关闭登录页
         [SVProgressHUD dismiss];
         [self dismissViewControllerAnimated:YES completion:nil];

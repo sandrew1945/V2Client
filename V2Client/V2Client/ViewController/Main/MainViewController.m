@@ -19,6 +19,7 @@
 #import "MJRefreshGifHeader.h"
 #import "MJRefreshAutoNormalFooter.h"
 #import "MJRefreshAutoGifFooter.h"
+#import "V2exControllerHolder.h"
 
 
 @interface MainViewController ()
@@ -51,6 +52,20 @@
     [self getMainPageData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [V2exControllerHolder shareInstance].drawerController.openDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    [V2exControllerHolder shareInstance].drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [V2exControllerHolder shareInstance].drawerController.openDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
+    [V2exControllerHolder shareInstance].drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
+}
+
 #pragma mark - TableView delegate & datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -66,32 +81,8 @@
 static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
-    if (!cell)
-    {
-        cell = [[MainTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_INDENTIFIER];
-    }
-    // Configure the cell...
     Topic *cellTopic = (Topic*)[self.topics objectAtIndex: [indexPath section]];
-    // 头像
-    NSURL *url = [NSURL URLWithString:[@"https:" stringByAppendingString:cellTopic.member.avatarNormal]];
-    [cell.avatarImageView setImageWithURL:url placeholderImage:nil];
-    // 发帖人
-    cell.userName.text = cellTopic.member.username;
-    // 最后回复人，回复时间
-    MainService *mainService = [[MainService alloc] init];
-    cell.lastReplyTime.text = [mainService handleTimeDifference:cellTopic.lastReplyTime];
-    if (nil != cellTopic.lastReplyBy && cellTopic.lastReplyBy.length != 0)
-    {
-        cell.lastReplyBy.text = [@"•    最后回复 " stringByAppendingString:cellTopic.lastReplyBy];
-    }
-    
-    // 标题
-    cell.topic.numberOfLines = 0;
-    cell.topic.text = cellTopic.title;
-    // 节点名称
-    cell.node.text = cellTopic.node.title;
-    // 回复数
-    cell.msgCount.text = cellTopic.replies;
+    [cell initByTopic:cellTopic];
     return cell;
 }
 

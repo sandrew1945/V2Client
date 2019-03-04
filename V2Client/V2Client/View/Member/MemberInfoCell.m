@@ -35,6 +35,7 @@
 #pragma mark - Layout
 - (void)setup
 {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     if (!self.avatarView)
     {
         self.avatarView = [[UIImageView alloc] init];

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Topic.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UILabel *lastReplyTime;
 @property (strong, nonatomic) UILabel *lastReplyBy;
 
+
+- (void)initByTopic:(Topic *)topic;
 @end
 
 NS_ASSUME_NONNULL_END
