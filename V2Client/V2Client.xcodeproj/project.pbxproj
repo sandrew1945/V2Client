@@ -30,6 +30,7 @@
 		C448D72A2201377700102BF4 /* Reply.m in Sources */ = {isa = PBXBuildFile; fileRef = C448D7292201377700102BF4 /* Reply.m */; };
 		C4557D0A221CDE1C00612B58 /* MemberInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4557D09221CDE1C00612B58 /* MemberInfoCell.m */; };
 		C4593FBA221BA0B800EAABDB /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4593FB9221BA0B800EAABDB /* MemberViewController.m */; };
+		C45C6F3A222E14CC00DE82C7 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45C6F39222E14CC00DE82C7 /* TopicViewController.m */; };
 		C4630A672227804F00F62A57 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4630A662227804F00F62A57 /* MyViewController.m */; };
 		C4630A6B2227B71400F62A57 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4630A6A2227B71400F62A57 /* NotificationViewController.m */; };
 		C4630A6F2227B7CC00F62A57 /* NotificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4630A6E2227B7CC00F62A57 /* NotificationViewCell.m */; };
@@ -43,7 +44,6 @@
 		C48C4400222CBB2C009EA866 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C43FF222CBB2C009EA866 /* FavoritesViewController.m */; };
 		C48C4403222CC0B7009EA866 /* NetworkingUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C48C4402222CC0B7009EA866 /* NetworkingUtil.m */; };
 		C4BB736121F945160026BB06 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BB736021F945160026BB06 /* Constants.m */; };
-		C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D24F6C21F742C100C18731 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +90,8 @@
 		C4557D09221CDE1C00612B58 /* MemberInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberInfoCell.m; sourceTree = "<group>"; };
 		C4593FB8221BA0B800EAABDB /* MemberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
 		C4593FB9221BA0B800EAABDB /* MemberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
+		C45C6F38222E14CC00DE82C7 /* TopicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
+		C45C6F39222E14CC00DE82C7 /* TopicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicViewController.m; sourceTree = "<group>"; };
 		C4630A652227804F00F62A57 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		C4630A662227804F00F62A57 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		C4630A692227B71400F62A57 /* NotificationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
@@ -116,8 +118,6 @@
 		C48C4402222CC0B7009EA866 /* NetworkingUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingUtil.m; sourceTree = "<group>"; };
 		C4BB735F21F945160026BB06 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C4BB736021F945160026BB06 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
-		C4D24F6B21F742C100C18731 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		C4D24F6C21F742C100C18731 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		EEECFC101CD3B3D8C1CFF595 /* libPods-V2Client.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-V2Client.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -217,8 +217,8 @@
 		C4339DE221F83FF700314BCB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C4D24F6B21F742C100C18731 /* MainViewController.h */,
-				C4D24F6C21F742C100C18731 /* MainViewController.m */,
+				C45C6F38222E14CC00DE82C7 /* TopicViewController.h */,
+				C45C6F39222E14CC00DE82C7 /* TopicViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -540,6 +540,7 @@
 				C4BB736121F945160026BB06 /* Constants.m in Sources */,
 				C48C4403222CC0B7009EA866 /* NetworkingUtil.m in Sources */,
 				C43633852213ECFB006739B4 /* LoginViewController.m in Sources */,
+				C45C6F3A222E14CC00DE82C7 /* TopicViewController.m in Sources */,
 				C428C4742200265B00AA0542 /* UIView+HSKit.m in Sources */,
 				C40C31A121F73BF600109E4A /* AppDelegate.m in Sources */,
 				C448D72A2201377700102BF4 /* Reply.m in Sources */,
@@ -554,7 +555,6 @@
 				C4630A672227804F00F62A57 /* MyViewController.m in Sources */,
 				C46611BC2212AA9600A96ECB /* V2exColor.m in Sources */,
 				C478F19D221FC172007D8CDE /* MemberTopicCell.m in Sources */,
-				C4D24F6D21F742C100C18731 /* MainViewController.m in Sources */,
 				C4593FBA221BA0B800EAABDB /* MemberViewController.m in Sources */,
 				C4339DDA21F8080100314BCB /* Node.m in Sources */,
 			);

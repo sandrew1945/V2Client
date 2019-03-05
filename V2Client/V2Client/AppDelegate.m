@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "TopicViewController.h"
 #import "MMDrawerController.h"
 #import "LeftMenuController.h"
 #import "V2exUser.h"
@@ -24,7 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    MainViewController *mainController = [[MainViewController alloc] init];
+    TopicViewController *mainController = [[TopicViewController alloc] init];
     mainController.title = @"V2EX";
     //self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:mainController];
     

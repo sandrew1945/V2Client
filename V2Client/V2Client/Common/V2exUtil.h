@@ -27,11 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 // 网络请求GET
 + (void)get:(NSString *)url
         parameters:(id)parameters
-        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success;
+        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success
+        withLoading:(BOOL)withLoading;
 // 网络请求POST
 + (void)post:(NSString *)url
         parameters:(id)parameters
-        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success;
+        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success
+        withLoading:(BOOL)withLoading;
 // 获取焦点
 + (void)onFucus:(UIView *)input;
 

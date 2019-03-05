@@ -134,8 +134,16 @@
 #pragma mark - Bind Data
 - (void)initByTopic:(Topic *)topic
 {
+    NSURL *url;
     // 头像
-    NSURL *url = [NSURL URLWithString:[@"https:" stringByAppendingString:topic.member.avatarNormal]];
+    if ([topic.member.avatarNormal containsString:@"https:"])
+    {
+        url = [NSURL URLWithString:topic.member.avatarNormal];
+    }
+    else
+    {
+        url = [NSURL URLWithString:[@"https:" stringByAppendingString:topic.member.avatarNormal]];
+    }
     [self.avatarImageView setImageWithURL:url placeholderImage:nil];
     // 发帖人
     self.userName.text = topic.member.username;

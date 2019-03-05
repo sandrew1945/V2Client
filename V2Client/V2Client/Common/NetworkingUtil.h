@@ -14,10 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NetworkingUtil : NSObject
 
 @property (strong, nonatomic) AFHTTPSessionManager        *manager;
-// 构造器
+
+//构造器
 + (instancetype)shareInstance;
 // 设置请求头
 - (void)setupHeader:(NSDictionary *)params;
+// 清除header
+- (void)releaseHeader:(NSArray *)keys;
 // 发起GET请求
 - (void)get:(NSString *)url
         parameters:(id)parameters

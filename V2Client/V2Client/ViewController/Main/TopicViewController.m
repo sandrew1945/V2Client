@@ -1,62 +1,70 @@
 //
-//  FavoritesViewController.m
+//  TopicViewController.m
 //  V2Client
 //
-//  Created by summer on 2019/3/4.
+//  Created by summer on 2019/3/5.
 //  Copyright © 2019 sandrew. All rights reserved.
 //
 
-#import "FavoritesViewController.h"
-#import "MainTableViewCell.h"
-#import "SVProgressHUD.h"
+#import "TopicViewController.h"
 #import "V2exUtil.h"
+#import "MainTableViewCell.h"
 #import "Constants.h"
-#import "Member.h"
-#import "Node.h"
-#import "DetailViewController.h"
+#import "SVProgressHUD.h"
 #import "MJRefreshGifHeader.h"
 #import "MJRefreshAutoGifFooter.h"
+#import "V2exControllerHolder.h"
+#import "DetailViewController.h"
 
-@interface FavoritesViewController ()
+@interface TopicViewController ()
 
 @end
 
-@implementation FavoritesViewController
+@implementation TopicViewController
 {
     int totalPage;
     int currentPage;
 }
-
-static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
-
-- (void)viewDidLoad
-{
+static NSString *CELL_INDENTIFIER = @"reuseIdentifier";
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.tableView registerClass:[MainTableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
-    // 设置下拉刷新，上拉更多
     totalPage = 1;
-    currentPage = 1;
+    currentPage = 0;
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.tableView registerClass:[MainTableViewCell class] forCellReuseIdentifier:CELL_INDENTIFIER];
     [self setRefresh];
     // 解析数据
-    [self crawlHtmlAndParse:FAVORITES_URL];
+    [self crawlHtmlAndParse:ALL_TOPIC_URL];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [V2exControllerHolder shareInstance].drawerController.openDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+    [V2exControllerHolder shareInstance].drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [V2exControllerHolder shareInstance].drawerController.openDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
+    [V2exControllerHolder shareInstance].drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeNone;
+}
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.topicListHolder count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_IDENTIFIER forIndexPath:indexPath];
+    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_INDENTIFIER forIndexPath:indexPath];
     [cell initByTopic:[self.topicListHolder objectAtIndex:[indexPath row]]];
     return cell;
 }
@@ -70,6 +78,7 @@ static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
     [self.navigationController pushViewController:subViewController animated:YES];
 }
 
+
 #pragma mark - Handle Data
 - (void)crawlHtmlAndParse:(NSString *)url
 {
@@ -77,9 +86,7 @@ static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
     [V2exUtil get:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //解析html
         NSString * htmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"response html : %@", htmlStr);
-        // 获取页数
-        totalPage = [self parsePageCount:htmlStr];
+        //NSLog(@"response html : %@", htmlStr);
         // 解析第一页
         [self parseHtml:htmlStr];
         [SVProgressHUD dismiss];
@@ -89,8 +96,13 @@ static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
 - (int)parsePageCount:(NSString *)html
 {
     TFHpple *htmlParser = [[TFHpple alloc] initWithHTMLData:[html dataUsingEncoding:NSUTF8StringEncoding]];
-    NSArray *elements = [V2exUtil getElementsFromParse:htmlParser ByXpath:@"//*[@class='page_normal']"];
-    return ([elements count] / 2) + 1;
+    NSString *pages = [V2exUtil getContentFromParse:htmlParser ByXpath:@"//*[@id='Wrapper']/div/div/div[27]/table/tr/td[2]/strong[1]"];
+    if (pages)
+    {
+        pages = [pages substringFromIndex:[pages rangeOfString:@"/"].location + 1];
+        return [pages intValue];
+    }
+    return 1;
 }
 
 - (void)parseHtml:(NSString *)html
@@ -100,11 +112,11 @@ static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
     for (TFHppleElement *element in elements) {
         Topic *topic = [[Topic alloc] init];
         NSString *avatarPath = [@"https:" stringByAppendingString:[V2exUtil getAttribute:@"src" FromElement:element ByXPath:@"//table/tr/td[1]/a[1]/img[1]"]];
-        NSString *memberName = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[2]/strong[1]/a[1]"];
-        NSString *topicTitle = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[1]/a[1]"];
-        NSString *topicId = [V2exUtil getAttribute:@"href" FromElement:element ByXPath:@"//table/tr/td[3]/span[1]/a[1]"];
-        NSString *replyTime = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[2]/strong[1]"];
-        NSString *nodeName = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[2]/a[1]"];
+        NSString *memberName = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[1]/strong/a[1]"];
+        NSString *topicTitle = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[2]/a[1]"];
+        NSString *topicId = [V2exUtil getAttribute:@"href" FromElement:element ByXPath:@"//table/tr/td[3]/span[2]/a[1]"];
+        NSString *replyTime = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[3]"];
+        NSString *nodeName = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[3]/span[1]/a[1]"];
         NSString *replyCount = [V2exUtil getContentFromElement:element ByXpath:@"//table/tr/td[4]/a[1]"];
         Member *member = [[Member alloc] init];
         member.avatarNormal = avatarPath;
@@ -145,18 +157,19 @@ static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
 {
     NSLog(@"reloading ..............");
     [self resetPageStatus];
-    [self crawlHtmlAndParse:FAVORITES_URL];
+    [self crawlHtmlAndParse:ALL_TOPIC_URL];
     [self.tableView.mj_header endRefreshing];
 }
 
 - (void)loadMoreData
 {
-    if (currentPage < totalPage)
+    // 为了效率不抓取总页数了，暂时只能翻10000页，如需要在加载时调用parsePageCount方法
+    if (currentPage < 10000)
     {
         currentPage ++;
         // 解析其他页
         NSString *page = [NSString stringWithFormat:@"?p=%d", currentPage];
-        [V2exUtil get:[FAVORITES_URL stringByAppendingString:page] parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [V2exUtil get:[RECENT_TOPIC_URL stringByAppendingString:page] parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             NSString *pageHtmlStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             [self parseHtml:pageHtmlStr];
             [self.tableView.mj_footer endRefreshing];
@@ -166,12 +179,11 @@ static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
     {
         [self.tableView.mj_footer endRefreshing];
     }
-    //[self.tableView reloadData];
 }
 
 - (void)resetPageStatus
 {
     totalPage = 1;
-    currentPage = 1;
+    currentPage = 0;
 }
 @end

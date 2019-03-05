@@ -24,8 +24,8 @@
 
 @implementation NotificationViewController
 static NSString *CELL_IDENTIFIER = @"reuseIdentifier";
-int totalPage = 1;
-int currentPage = 1;
+static int totalPage = 1;
+static int currentPage = 1;
 - (void)viewDidLoad
 {
     [super viewDidLoad];

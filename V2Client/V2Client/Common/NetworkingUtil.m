@@ -47,28 +47,37 @@ static NetworkingUtil * _instance = nil;
 
 - (void)post:(NSString *)url
         parameters:(id)parameters
+        preHandle:(void (^)(void))preHandle
         progress:(void (^)(NSProgress * _Nonnull))downloadProgress
         success:(void (^)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject))success
         failure:(void (^)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error))failure
 {
     [self initManager];
+    preHandle();
     [self.manager POST:url parameters:parameters progress:downloadProgress success:success failure:failure];
 }
 
 - (void)initManager
 {
-    // 初始化对象
-    self.manager = [AFHTTPSessionManager manager];
-    self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"image/png", nil];
+    if (!self.manager)
+    {
+        // 初始化对象
+        self.manager = [AFHTTPSessionManager manager];
+        self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"image/png", nil];
+    }
 }
 
 - (void)setupHeader:(NSDictionary *)params
 {
     NSArray *keys = [params allKeys];
-    for (NSString *key in keys)
+    if (params)
     {
-        [self.manager.requestSerializer setValue:[params objectForKey:key] forHTTPHeaderField:key];
+        [self initManager];
+        for (NSString *key in keys)
+        {
+            [self.manager.requestSerializer setValue:[params objectForKey:key] forHTTPHeaderField:key];
+        }
     }
 }
 

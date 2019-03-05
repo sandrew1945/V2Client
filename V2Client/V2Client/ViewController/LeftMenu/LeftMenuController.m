@@ -16,6 +16,7 @@
 #import "Masonry.h"
 #import "MyViewController.h"
 #import "NotificationViewController.h"
+#import "FavoritesViewController.h"
 
 @interface LeftMenuController ()
 
@@ -141,6 +142,7 @@ static NSString *NODE_CELL = @"nodeCellIdentifier";
                     }
                     case 2:
                     {
+                        [self showFavorites];
                         break;
                     }
                 }
@@ -270,6 +272,13 @@ static NSString *NODE_CELL = @"nodeCellIdentifier";
 {
     NotificationViewController *notificationViewController = [[NotificationViewController alloc] init];
     [[V2exControllerHolder shareInstance].centerViewController pushViewController:notificationViewController animated:YES];
+    [[V2exControllerHolder shareInstance].drawerController closeDrawerAnimated:YES completion:nil];
+}
+
+- (void)showFavorites
+{
+    FavoritesViewController *favoritesViewController = [[FavoritesViewController alloc] init];
+    [[V2exControllerHolder shareInstance].centerViewController pushViewController:favoritesViewController animated:YES];
     [[V2exControllerHolder shareInstance].drawerController closeDrawerAnimated:YES completion:nil];
 }
 @end

@@ -75,11 +75,18 @@
 // 网络请求GET
 + (void)get:(NSString *)url
         parameters:(id)parameters
-        success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
+        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
+        withLoading:(BOOL)withLoading
 {
+    NSMutableDictionary *header = [[NSMutableDictionary alloc] init];
+    [header setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4" forKey:@"user-agent"];
+    [[NetworkingUtil shareInstance] setupHeader:header];
     [[NetworkingUtil shareInstance] get:url parameters:parameters preHandle:^{
-        [SVProgressHUD showWithStatus:@"加载中"];
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        if (withLoading)
+        {
+            [SVProgressHUD showWithStatus:@"加载中"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }
     } progress:nil success:success failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
@@ -87,11 +94,15 @@
 // 网络请求POST
 + (void)post:(NSString *)url
         parameters:(id)parameters
-        success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
+        success:(void (^)(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject))success
+        withLoading:(BOOL)withLoading
 {
     [[NetworkingUtil shareInstance] post:url parameters:parameters preHandle:^{
-        [SVProgressHUD showWithStatus:@"加载中"];
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        if (withLoading)
+        {
+            [SVProgressHUD showWithStatus:@"加载中"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }
     } progress:nil success:success failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"加载失败"];
     }];
